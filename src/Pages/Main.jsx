@@ -1,6 +1,6 @@
 import Rocket from "../assets/rocket.png";
 
-function MainPage() {
+function Main() {
     return (
         <div className="h-screen grid grid-cols-1 xl:grid-cols-2 xl:p-20 p-5" >
             <div className="flex flex-col items-center justify-center gap-2 text-center lg:text-left lg:items-start">
@@ -17,4 +17,4 @@ function MainPage() {
 }
 
 
-export default MainPage;
+export default Main;

@@ -22,8 +22,11 @@ function Data () {
         fetch(firstSession === true ? popularMoviesURL : url, options)
             .then(res => res.json())
             .then(json => {
-                console.log(json)
-                setMovies(json.results)
+                if(json.results.length == 0){
+                    window.alert("No se encontraron resultados")
+                }else{
+                    setMovies(json.results)
+                }
             })
             .catch(err => console.error(err));
 
@@ -42,7 +45,7 @@ function Data () {
             <form onSubmit={handleSubmit}>
                 <div className='flex gap-2 justify-center mt-9'>
                     <label class="input input-bordered flex items-center gap-2 back">
-                        <input type="text" class="grow" placeholder="Avatar, Vengadores, Titanic, Star Wars .... " name='movie' />
+                        <input type="text" class="grow" placeholder="Avatar, Vengadores, Titanic, Star Wars .... " name='movie' required/>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"

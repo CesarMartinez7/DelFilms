@@ -5,7 +5,7 @@ import Footer from './Footer'
 
 const Movie = () => {
     const { id } = useParams();
-    const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=46bc83931796202fd8d9924bf15987dd`;
+    const URL = `https://api.themoviedb.org/3/movie/${id}`;
     const [data, setData] = useState(null);
     const opciones = {
         method: 'GET',
@@ -26,7 +26,7 @@ const Movie = () => {
 
     return (
         <>
-        <main>
+        <main className="p-7 ">
             <div className="text-white card grid grid-cols-1 md:grid-cols-2 gap-5 xl:p-12 p-6 ">
                 <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen">
                     <h1 className="text-gray-300 font-bold text-5xl mb-3 mt-3">{data?.title}</h1>

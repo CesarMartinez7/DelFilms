@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 function Navbar() {
   const [isOpen,setIsOpen] = useState(false)
@@ -6,7 +7,7 @@ function Navbar() {
     setIsOpen(!isOpen)
   }
   return (
-    <div className="navbar mb-4 rounded-2xl back shadow-lg p-2 top-0   z-50">
+    <div className="navbar  rounded-2xl back shadow-lg p-2 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -42,7 +43,8 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">DelTi</a>
+        <a className="btn btn-ghost text-xl" href="/">DelTi</a>
+        <Icon icon="solar:clapperboard-play-bold" width="24" height="24" />
       </div>
       <div className="navbar-end">
           <input className={isOpen==true ? "block back p-1 rounded-lg ring-none outline-none ring-1" : "hidden p-1 " }/>

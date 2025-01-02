@@ -35,6 +35,10 @@ function Data () {
     const handleSubmit = (e) => {
         e.preventDefault();
         let MOVIE = e.target.movie.value;
+        if(MOVIE.length < 1){
+            window.alert("Debes ingresar una película")
+            return;
+        }
         setQueryMovie(MOVIE);        
     };
     
@@ -45,7 +49,7 @@ function Data () {
             <form onSubmit={handleSubmit}>
                 <div className='flex gap-2 justify-center mt-9'>
                     <label class="input input-bordered flex items-center gap-2 back">
-                        <input type="text" class="grow" placeholder="Avatar, Vengadores, Titanic, Star Wars .... " name='movie' required/>
+                        <input type="text" class="grow" placeholder="Avatar, Vengadores, Titanic, Star Wars .... " name='movie'/>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"
@@ -61,7 +65,7 @@ function Data () {
                 </div>
             </form>
             <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">{firstSession == true ? "Películas populares " : ""}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 p-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-6 mb-6">
                 {movies.map((movie) => (
                     <a href={`/movie/${movie.id}`} key={movie.id} className="card rounded-xl p-2">
                         <img

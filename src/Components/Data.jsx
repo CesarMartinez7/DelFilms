@@ -22,6 +22,7 @@ function Data () {
         fetch(firstSession === true ? popularMoviesURL : url, options)
             .then(res => res.json())
             .then(json => {
+                console.log(json.results)
                 if(json.results.length == 0){
                     window.alert("No se encontraron resultados")
                 }else{
@@ -70,7 +71,7 @@ function Data () {
                     <a href={`/movie/${movie.id}`} key={movie.id} className="card rounded-xl p-2">
                         <img
                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title} className='rounded-lg object-cover' />
+                            alt={movie.title} className='rounded-lg object-cover h-fit max-h-fit' />
                         <article className='flex flex-col gap-2 p-4'>
                             <h3 className='font-semibold text-2xl'>{movie.title}</h3>
                             {/* // Si es mayor a 500 caracteres, corta el texto, si no muestra todo el texto */}

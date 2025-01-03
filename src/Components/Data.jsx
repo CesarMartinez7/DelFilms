@@ -71,7 +71,7 @@ function Data() {
                 </div>
             </form>
             <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">{firstSession == true ? "" : "Peliculas Populares"}</h3>
-            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-2 md:grid-cols-4 xl:gap-4 p-6 mb-6" ref={ref}>
+            <div className="grid grid-cols-3 lg:grid-cols-7 xl:grid-cols-8 gap-2 md:grid-cols-5 xl:gap-4 p-6 mb-6" ref={ref}>
                 {movies.map((movie) => (
                     <a href={`/movie/${movie.id}`} key={movie.id} className="rounded-2xl p-1">
                         <img

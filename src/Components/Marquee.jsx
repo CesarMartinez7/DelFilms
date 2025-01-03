@@ -41,7 +41,7 @@ const Marqueee = () => {
         {dataMockMarquee2.results.map((data, index) => (
           <a
             key={index}
-            className="text-white child text-3xl w-52 h-30 w-24 xl:w-52 xl:h-30"
+            className="text-white child text-3xl w-24 xl:w-52 xl:h-30"
             onClick={() => navigate(`/movie/${data.id}`)} 
           >
             <img

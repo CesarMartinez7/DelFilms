@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { PacmanLoader } from "react-spinners";
+import Data from "./Components/Data";
+
 
 const Loading = () => {
   return (
@@ -22,6 +24,7 @@ const Movie = lazy(() => import("./Pages/Movie"));
 const MainPage = lazy(() => import("./Components/Main"));
 
 function App() {
+  const [querySearch, setQuerySearch] = useState("");
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem("isDark");
     return savedTheme ? JSON.parse(savedTheme) : true;
@@ -32,8 +35,9 @@ function App() {
     document.documentElement.setAttribute("data-theme", isDark ? "black" : "dark");
   }, [isDark]);
 
+
   return (
-    <AppThemeContext.Provider value={{ isDark, setIsDark }}>
+    <AppThemeContext.Provider value={{ isDark, setIsDark, querySearch, setQuerySearch }}>
       <Suspense fallback={<Loading />}>
         <BrowserRouter>
           <Navbar />
@@ -42,6 +46,7 @@ function App() {
             <Route path="/movie/:id" element={<Movie />} />
             <Route path="*" element={<h1>Not Found</h1>} />
             <Route path="/main" element={<MainPage />} />
+            <Route path="/search" element={<Data></Data>} />
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { AppThemeContext } from "../App";
-import { useContext } from "react";
+import { useContext ,useEffect} from "react";
 
 const html = document.querySelector("html");
 
 
 function Navbar() {
-  const { isDark, setIsDark } = useContext(AppThemeContext);
+  const { isDark, setIsDark, querySearch, setQuerySearch} = useContext(AppThemeContext);
   const [isOpen, setIsOpen] = useState(false);
 
   console.log(isDark);
+  console.log(querySearch)
+
+  useEffect(() => {
+    console.log(querySearch)
+  },[querySearch])
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -57,7 +62,7 @@ function Navbar() {
         </a>
       </div>
       <div className="navbar-end">
-        <input
+        <input onChange={(e) => {setQuerySearch(e.target.value)}} type="text" placeholder="Buscar" className="input input-ghost input-sm" 
           className={
             isOpen == true
               ? "block back p-1 rounded-lg ring-none outline-none ring-1"

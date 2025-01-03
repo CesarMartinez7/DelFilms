@@ -7,9 +7,9 @@ const html = document.querySelector("html");
 
 
 function Navbar() {
-  const { isDark, setIsDark} = useContext(AppThemeContext);
+  const { isDark, setIsDark } = useContext(AppThemeContext);
   const [isOpen, setIsOpen] = useState(false);
-  
+
   console.log(isDark);
 
   const handleClick = () => {
@@ -81,13 +81,14 @@ function Navbar() {
           </svg>
         </button>
         <button
-          className="btn btn-ghost btn-circle "
+          className="btn btn-ghost btn-circle hover:animation- duration-500" 
           onClick={() => {
             setIsDark(!isDark);
             html.setAttribute("data-theme", isDark ? "black" : "dark");
-          }}
-        >
-          <Icon icon="solar:moon-bold" width="20" height="21" />
+          }}>
+            {isDark ? <Icon icon="solar:sun-2-bold" width="24" height="24"  /> : <Icon icon="solar:moon-bold" width="20" height="21"  />}
+            
+            
         </button>
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">

@@ -5,9 +5,9 @@ function Footer() {
   return (
     <footer className="footer  text-neutral-content p-10">
       <aside>
-      <Icon icon="solar:clapperboard-play-bold" width="50" height="50" />
+      <strong className="font-bold text-3xl" >{">.<"}</strong>
         <p>
-          DelFi
+          DelTi
           <br />
             Your favorite movies ;).
         </p>

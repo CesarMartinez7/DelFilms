@@ -1,4 +1,0 @@
-string = "A short post-apocalyptic film about a young woman named Blake. The narrative focuses on a snippet of her life as she wanders through an abandoned town, like so many before. She encounters traces of the people that used to live here and the lives they have led and left behind. Initially amused by her discoveries, these feelings quickly dissipate as loneliness consumes her and she finds herself aching for any kind of human interaction. The unfolding story and elements in the scenery let us know that Blake has been alone for quite some time and can't cope with the isolation anymore. She is reaching her breaking point. In a last struggle to carry on she ends up finding a most unlikely companion and together they continue the journey."
-
-
-print(len(string))

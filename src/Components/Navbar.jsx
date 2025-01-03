@@ -44,8 +44,8 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl" href="/">DelTi</a>
-        <Icon icon="solar:clapperboard-play-bold" width="24" height="24" />
+        <a className="btn btn-ghost text-xl" href="/">{'DelTi >.<'}</a>
+        
       </div>
       <div className="navbar-end">
           <input className={isOpen==true ? "block back p-1 rounded-lg ring-none outline-none ring-1" : "hidden p-1 " }/>

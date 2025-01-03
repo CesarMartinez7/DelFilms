@@ -8,9 +8,10 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start" : "node server.cjs"
+    "start": "node server.cjs"
   },
   "dependencies": {
+    "@devnomic/marquee": "^1.0.2",
     "daisyui": "^4.12.23",
     "express": "^4.21.2",
     "react": "^18.3.1",

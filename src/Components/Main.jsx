@@ -8,7 +8,7 @@ function Main() {
         <h2 className="text-4xl md:text-6xl min-h-[3rem] max-w-[26rem] md:max-w-[35rem] md:w-[50rem] md:h-32  text-center lg:text-left  bg-gradient-to-br from-white to-gray-950 bg-clip-text text-transparent">
           Descubre, disfruta y comparte películas.
         </h2>
-        <p className="text-md md:text-lg lg:text-xl xl:text-2xl text-gray-500 font-extralight">
+        <p className="text-sm md:text-lg lg:text-xl xl:text-1xl text-gray-500 font-extralight">
           Explora y disfruta tus películas favoritas.
         </p>
       </div>

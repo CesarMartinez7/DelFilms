@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Footer from './Footer'
+import Footer from '../Components/Footer'
 
 const Movie = () => {
     const { id } = useParams();
@@ -69,7 +69,7 @@ const Movie = () => {
                     </div>
                 </div>
                 <div className="w-[90vw] h-[90vh] md:w-[90vw] md:h-[90vh] mx-auto p-4 flex flex-col gap-7 t-5">
-                    <p className="title font-extrabold text-2xl text-center">Mirar {data?.title}</p>
+                    <p className="font-extrabold text-5xl text-center">Mirar {data?.title}</p>
                     <iframe
                         src={`https://vidlink.pro/movie/${id}?primaryColor=ff2025&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=false&nextbutton=true`}
                         frameborder="0"

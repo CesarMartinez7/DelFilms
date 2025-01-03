@@ -5,9 +5,9 @@ import './App.css'
 import Data from './Components/Data'
 import Movie from './Pages/Movie'
 import { BrowserRouter , Routes, Route } from 'react-router-dom'
-import Navbar from './Pages/Navbar'
-import MainPage from './Pages/Main'
-import Footer from './Pages/Footer'
+import Navbar from './Components/Navbar'
+import MainPage from './Components/Main'
+import Footer from './Components/Footer'
 import Home from './Pages/Home'
 
 

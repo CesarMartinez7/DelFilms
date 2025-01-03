@@ -1,7 +1,7 @@
-import React, { useState, useEffect,useMemo,useRef} from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Marqueee from './Marquee';
 
-function Data () {
+function Data() {
     const ref = useRef(null);
     const [queryMovie, setQueryMovie] = useState('');
     const [movies, setMovies] = useState([]);
@@ -27,35 +27,38 @@ function Data () {
             .then(res => res.json())
             .then(json => {
                 console.log(json.results)
-                if(json.results.length == 0){
+                if (json.results.length == 0) {
                     window.alert("No se encontraron resultados")
-                }else{
+                } else {
                     setMovies(json.results)
                 }
             })
             .catch(err => console.error(err));
 
     }, [queryMovie]);
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         let MOVIE = e.target.movie.value;
-        if(MOVIE.length < 1){
+        if (MOVIE.length < 1) {
             window.alert("Debes ingresar una película")
             return;
         }
-        setQueryMovie(MOVIE);        
+        setQueryMovie(MOVIE);
     };
-    
+
 
     return (
         <div>
-            <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">Busca tus películas favoritas</h3>
-            <Marqueee />
+            <section>
+                <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">Busca tus películas favoritas</h3>
+                 <p className='text-center font-light'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, eius.</p>
+                <Marqueee />
+            </section>
             <form onSubmit={handleSubmit}>
                 <div className='flex gap-2 justify-center mt-9'>
                     <label className="input input-bordered flex items-center gap-2 back">
-                        <input type="text" className="grow" placeholder="Avatar, Vengadores, Titanic, Star Wars .... " name='movie'/>
+                        <input type="text" className="grow" placeholder="Avatar, Vengadores, Titanic, Star Wars .... " name='movie' />
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"

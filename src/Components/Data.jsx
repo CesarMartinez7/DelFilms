@@ -18,9 +18,6 @@ function Data() {
         }
     };
     useEffect(() => {
-        if (ref.current) {
-            ref.current.scrollIntoView({ behavior: "smooth" });
-        }
         setFirstSession(false);
         console.log(firstSession)
         fetch(firstSession === true ? popularMoviesURL : url, options)
@@ -51,7 +48,7 @@ function Data() {
     return (
         <div>
             <section>
-                <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">Busca tus películas favoritas</h3>
+                <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">Busca tus Películas favoritas</h3>
                  <p className='text-center font-light'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, eius.</p>
                 <Marqueee />
             </section>
@@ -73,18 +70,16 @@ function Data() {
                     <button type="submit" className='btn back'>Buscar</button>
                 </div>
             </form>
-            <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">{firstSession == true ? "Películas populares " : ""}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-6 mb-6" ref={ref}>
+            <h3 className="text-6xl font-semibold text-transparent bg-gradient-to-br mb-3.5 from-white to-gray-950 bg-clip-text text-center">{firstSession == true ? "" : "Peliculas Populares"}</h3>
+            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-2 md:grid-cols-4 xl:gap-4 p-6 mb-6" ref={ref}>
                 {movies.map((movie) => (
-                    <a href={`/movie/${movie.id}`} key={movie.id} className="card rounded-xl p-2">
+                    <a href={`/movie/${movie.id}`} key={movie.id} className="rounded-2xl p-1">
                         <img
                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title} className='rounded-lg object-cover h-fit max-h-fit' />
-                        <article className='flex flex-col gap-2 p-4'>
-                            <h3 className='font-semibold text-2xl'>{movie.title}</h3>
+                            alt={movie.title} className='object-cover w-full max-w-full h-full max-h-full rounded-2xl' />
+                        
                             {/* // Si es mayor a 500 caracteres, corta el texto, si no muestra todo el texto */}
-                            <p className='font-light'>{movie.overview.length > 450 ? `${movie.overview.substring(0, 400)} ...` : movie.overview}</p>
-                        </article>
+                            {/* <p className='font-light'>{movie.overview.length > 450 ? `${movie.overview.substring(0, 400)} ...` : movie.overview}</p> */}
                     </a>
                 ))}
             </div>

@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 
 function Navbar() {
   const [isOpen,setIsOpen] = useState(false)
+  const [isDark,setIsDark] = useState(false)
   const handleClick = () => {
     setIsOpen(!isOpen)
   }
@@ -31,13 +32,13 @@ function Navbar() {
             className="menu menu-sm dropdown-content back bg-base-100 rounded-box  mt-3 w-52 p-2 shadow z-50"
           >
             <li>
-              <a href="/">Homepage</a>
+              <a href="/">Inicio</a>
             </li>
             <li>
               <a>Portfolio</a>
             </li>
             <li>
-              <a>About</a>
+              <a>Acerca de</a>
             </li>
           </ul>
         </div>
@@ -63,6 +64,9 @@ function Navbar() {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
+        </button>
+        <button className="btn btn-ghost btn-circle " onClick={handleClick}>
+        <Icon icon="solar:moon-bold" width="20" height="21" />
         </button>
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">

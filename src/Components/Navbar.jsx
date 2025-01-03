@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
+import { AppThemeContext } from "../App";
+import { useContext } from "react";
+
+const html = document.querySelector("html");
+
 
 function Navbar() {
-  const [isOpen,setIsOpen] = useState(false)
-  const [isDark,setIsDark] = useState(false)
+  const { isDark, setIsDark} = useContext(AppThemeContext);
+  const [isOpen, setIsOpen] = useState(false);
+  
+  console.log(isDark);
+
   const handleClick = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="navbar  rounded-2xl back shadow-lg p-2 z-50">
       <div className="navbar-start">
@@ -44,11 +52,18 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl" href="/">{'DelTi >.<'}</a>
-        
+        <a className="btn btn-ghost text-xl" href="/">
+          {"DelTi >.<"}
+        </a>
       </div>
       <div className="navbar-end">
-          <input className={isOpen==true ? "block back p-1 rounded-lg ring-none outline-none ring-1" : "hidden p-1 " }/>
+        <input
+          className={
+            isOpen == true
+              ? "block back p-1 rounded-lg ring-none outline-none ring-1"
+              : "hidden p-1 "
+          }
+        />
         <button className="btn btn-ghost btn-circle " onClick={handleClick}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +80,14 @@ function Navbar() {
             />
           </svg>
         </button>
-        <button className="btn btn-ghost btn-circle " onClick={handleClick}>
-        <Icon icon="solar:moon-bold" width="20" height="21" />
+        <button
+          className="btn btn-ghost btn-circle "
+          onClick={() => {
+            setIsDark(!isDark);
+            html.setAttribute("data-theme", isDark ? "black" : "dark");
+          }}
+        >
+          <Icon icon="solar:moon-bold" width="20" height="21" />
         </button>
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">

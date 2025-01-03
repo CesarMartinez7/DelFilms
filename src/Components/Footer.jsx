@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer  text-neutral-content p-10">
       <aside>
-      <strong className="font-bold text-3xl" >{">.<"}</strong>
+      <strong className="font-bold text-4xl" >{">.<"}</strong>
         <p>
           DelTi
           <br />

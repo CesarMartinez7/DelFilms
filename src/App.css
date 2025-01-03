@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 
-:root{
+/* :root{
   background: radial-gradient(circle, rgba(0, 0, 0, 0.863) 34%, rgba(0,0,0,1) 100%); 
-}
+} */
 
 
 .card {

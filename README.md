@@ -2,6 +2,11 @@
 
 <strong>Delti</strong> es una aplicación web para descubrir, disfrutar y compartir películas. Utiliza la API de The Movie Database (TMDb) para obtener información sobre películas populares junto con la api de [Vidlink](https://vidlink.pro/) y permite a los usuarios buscar sus películas favoritas si anuncios.
 
+# Deploy Link Free
+   - [Vercel](https://del-ti-films.vercel.app/)
+   - [Render](https://delti.onrender.com/)
+
+
 ## Características
 
 - **Búsqueda de películas**: Busca tus películas favoritas por título.
@@ -68,6 +73,10 @@
     - Realizar pruebas exhaustivas para asegurar que todas las funcionalidades funcionan correctamente.
     - Depurar cualquier error o problema que surja durante las pruebas.
 
+
+
+
+
 ## Contacto
 
-Para cualquier consulta o sugerencia, por favor contacta a [tu-email@dominio.com](mailto:tu-email@dominio.com).
+Para cualquier consulta o sugerencia, por favor contacta a 

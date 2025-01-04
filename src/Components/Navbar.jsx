@@ -1,25 +1,24 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { AppThemeContext } from "../App";
-import { useContext ,useEffect} from "react";
+import { useContext, useEffect } from "react";
 
 const html = document.querySelector("html");
 
-
 function Navbar() {
-  const { isDark, setIsDark, querySearch, setQuerySearch} = useContext(AppThemeContext);
+  const { isDark, setIsDark, querySearch, setQuerySearch } =
+    useContext(AppThemeContext);
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log(isDark);
-  console.log(querySearch)
-
   useEffect(() => {
-    console.log(querySearch)
-  },[querySearch])
+    console.log(querySearch);
+  }, [querySearch]);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const query = e.target.elements.movienav.value;
+    setQuerySearch(query);
   };
+
   return (
     <div className="navbar  rounded-2xl back shadow-lg p-2 z-50">
       <div className="navbar-start">
@@ -42,7 +41,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content back bg-base-100 rounded-box  mt-3 w-52 p-2 shadow z-50"
+            className="menu dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow back"
           >
             <li>
               <a href="/">Inicio</a>
@@ -62,38 +61,54 @@ function Navbar() {
         </a>
       </div>
       <div className="navbar-end">
-        <input onChange={(e) => {setQuerySearch(e.target.value)}} type="text" placeholder="Buscar" className="input input-ghost input-sm" 
-          className={
-            isOpen == true
-              ? "block back p-1 rounded-lg ring-none outline-none ring-1"
-              : "hidden p-1 "
-          }
-        />
-        <button className="btn btn-ghost btn-circle " onClick={handleClick}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <div className="dropdown dropdown-bottom dropdown-end ">
+          <div tabIndex={0} role="button" className="m-1 btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box back z-[1] w-52 p-2 shadow"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </button>
+            <li>
+              <form onSubmit={handleSubmit}>
+                <input
+                  name="movienav"
+                  type="text"
+                  placeholder="Star Wars, Avengers..."
+                  className={
+                    "back p-1 px-5 w-full rounded-lg ring-none outline-none ring-1"
+                  }
+                />
+              </form>
+            </li>
+          </ul>
+        </div>
+
         <button
-          className="btn btn-ghost btn-circle hover:animation- duration-500" 
+          className="btn btn-ghost btn-circle hover:animation- duration-500"
           onClick={() => {
             setIsDark(!isDark);
             html.setAttribute("data-theme", isDark ? "black" : "dark");
-          }}>
-            {isDark ? <Icon icon="solar:sun-2-bold" width="24" height="24"  /> : <Icon icon="solar:moon-bold" width="20" height="21"  />}
-            
-            
+          }}
+        >
+          {isDark ? (
+            <Icon icon="solar:sun-2-bold" width="24" height="24" />
+          ) : (
+            <Icon icon="solar:moon-bold" width="20" height="21" />
+          )}
         </button>
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">

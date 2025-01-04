@@ -12,7 +12,7 @@ import Data from "./Components/Data";
 const Loading = () => {
   return (
     <div className="fixed inset-0 flex justify-center items-center">
-      <PacmanLoader color="white" />
+      <PacmanLoader color="#8A8C91" />
     </div>
   );
 };

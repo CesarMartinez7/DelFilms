@@ -1,11 +1,14 @@
+
 import Data from "../Components/Data";
 import Main from "../Components/Main";
+import Marqueee from "../Components/Marquee";
 
 const Home = () => {
   return (
     <>
-      <div>
+      <div className="flex flex-col gap-5">
         <Main />
+        <Marqueee></Marqueee>
         <Data />
       </div>
     </>

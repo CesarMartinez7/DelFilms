@@ -4,6 +4,14 @@ import { useState, useEffect } from "react";
 import Breakcumbs from "../Components/Breakcumbs";
 
 
+const backGround = (data) => {
+  const imageneBack = document.querySelector(".imagene");
+  if(imageneBack){
+    imageneBack.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.911) 44%, rgba(0,0,0,1) 90%),url('https://image.tmdb.org/t/p/w500${data?.backdrop_path}')`;
+  }
+}
+
+
 const Movie = () => {
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}`;
@@ -13,23 +21,24 @@ const Movie = () => {
     headers: {
       accept: "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM",
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM",
     },
   };
-
+  
   useEffect(() => {
     fetch(URL, opciones)
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        setData(json);
-      })
-      .catch((err) => console.error(err));
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+      setData(json);
+    })
+    .catch((err) => console.error(err));
   }, [id, URL]);
 
+  
   return (
-    <>
-      <main className="p-1">
+    <section>
+      <main className="imagene">
         <Breakcumbs movie={data?.title} />
         <div className="text-white grid grid-cols-1 md:grid-cols-2 gap-5 xl:p-12 p-4 md:p-12 mt-12 md:mt-0 ">
           <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2">
@@ -98,7 +107,7 @@ const Movie = () => {
           ></iframe>
         </div>
       </main>
-    </>
+      </section>
   );
 };
 

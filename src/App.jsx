@@ -48,7 +48,10 @@ function App() {
             <Route path="/main" element={<MainPage />} />
             <Route path="/search" element={<Data></Data>} />
           </Routes>
+          <div>
           <Footer />
+
+          </div>
         </BrowserRouter>
       </Suspense>
     </AppThemeContext.Provider>

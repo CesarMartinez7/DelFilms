@@ -3,11 +3,11 @@ import { Icon } from "@iconify/react";
 
 function Footer() {
   return (
-    <footer className="footer  text-neutral-content p-10">
+    <footer className="footer text-neutral-content p-10">
       <aside>
       <strong className="font-bold text-4xl" >{">.<"}</strong>
         <p>
-          DelTi
+          DelFilms
           <br />
             Your favorite movies ;).
         </p>

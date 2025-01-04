@@ -8,12 +8,27 @@ import { useNavigate } from "react-router-dom";
 function Navbar() {
   const navigate = useNavigate();
   const { isDark, setIsDark, querySearch, setQuerySearch } =
-    useContext(AppThemeContext);  
+    useContext(AppThemeContext);
+  const [data, setData] = useState([]);
+  const [movie, setMovie] = useState("");
 
+  const opciones = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM",
+    },
+  };
+
+  const URL = `https://api.themoviedb.org/3/search/movie?query=${movie}`;
 
   useEffect(() => {
+    fetch(URL, opciones)
+      .then((response) => response.json())
+      .then((data) => setData(data.results));
     console.log(querySearch);
-  }, [querySearch]);
+  }, [movie, querySearch, URL]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,7 +76,7 @@ function Navbar() {
       </div>
       <div className="navbar-center">
         <a className="btn btn-ghost text-xl" href="/">
-          {"DelTi >.<"}
+          {"DelFilms >.<"}
         </a>
       </div>
       <div className="navbar-end">
@@ -88,7 +103,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box back z-[1] w-52 p-2 shadow"
+            className="dropdown-content menu rounded-box back z-[1] w-auto p-2 shadow bg-slate-950"
           >
             <li>
               <form onSubmit={handleSubmit}>
@@ -97,13 +112,27 @@ function Navbar() {
                   element="input"
                   name="movienav"
                   type="text"
+                  onChange={(e) => {
+                    setMovie(e.target.value);
+                    console.log(movie);
+                  }}
                   placeholder="Star Wars, Avengers..."
                   className={
-                    "back p-1 px-5 w-full rounded-lg ring-none outline-none ring-1"
+                    "back p-1 px-3 rounded-lg ring-none outline-none focus:ring-0 w-72 min-w-60 max-w-52"
                   }
                 />
               </form>
             </li>
+            {data.map((movie, index) => (
+              <li key={index} >
+                <a href={`/movie/${movie.id}`} className="flex items-center content-center" title={movie?.overview}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path}`} className="h-14 w-10 rounded-lg object-cover"
+                  />
+                  <p>{movie.title}</p>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 

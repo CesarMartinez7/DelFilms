@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { Icon } from "@iconify/react";
-import { AppThemeContext } from "../App";
-import { useContext, useEffect } from "react";
-const html = document.querySelector("html");
+import { useState,useContext, useEffect,useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppThemeContext } from "../App";
+import NavbarQueryFetch from "./NavbarQueryFetch";
+
+const html = document.querySelector("html");
 
 function Navbar() {
+  const inputRef = useRef(null);
   const navigate = useNavigate();
   const { isDark, setIsDark, querySearch, setQuerySearch } =
     useContext(AppThemeContext);
@@ -80,7 +82,7 @@ function Navbar() {
         </a>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-bottom dropdown-end ">
+        <div className="dropdown dropdown-bottom dropdown-end" onClick={() => inputRef.current.focus()}>
           <div
             tabIndex={0}
             role="button"
@@ -103,11 +105,12 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box back z-[1] w-auto p-2 shadow bg-slate-950"
+            className="dropdown-content menu rounded-box back -z-50 w-auto p-2 shadow bg-slate-950"
           >
             <li>
               <form onSubmit={handleSubmit}>
                 <input
+                ref={inputRef}
                   autoComplete="true"
                   element="input"
                   name="movienav"
@@ -124,14 +127,7 @@ function Navbar() {
               </form>
             </li>
             {data.map((movie, index) => (
-              <li key={index} >
-                <a href={`/movie/${movie.id}`} className="flex items-center content-center" title={movie?.overview}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie?.poster_path}`} className="h-14 w-10 rounded-lg object-cover"
-                  />
-                  <p>{movie.title}</p>
-                </a>
-              </li>
+              <NavbarQueryFetch movie={movie} index={index} key={index} />
             ))}
           </ul>
         </div>

@@ -9,7 +9,6 @@ const Home = () => {
       <div className="flex flex-col gap-36">
         <Main />
         <Marqueee></Marqueee>
-        <Data />
       </div>
     </>
   );

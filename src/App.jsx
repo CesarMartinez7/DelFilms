@@ -33,7 +33,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("isDark", JSON.stringify(isDark));
     document.documentElement.setAttribute("data-theme", isDark ? "black" : "dark");
-  }, [isDark]);
+  }, [isDark, querySearch]);
 
 
   return (

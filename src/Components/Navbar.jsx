@@ -2,25 +2,29 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { AppThemeContext } from "../App";
 import { useContext, useEffect } from "react";
-
 const html = document.querySelector("html");
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   const { isDark, setIsDark, querySearch, setQuerySearch } =
-    useContext(AppThemeContext);
-  const [isOpen, setIsOpen] = useState(false);
+    useContext(AppThemeContext);  
+
+
   useEffect(() => {
     console.log(querySearch);
   }, [querySearch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const query = e.target.elements.movienav.value;
-    setQuerySearch(query);
+    const MOVIEQUERY = e.target.elements.movienav.value;
+    localStorage.setItem("movie_query", MOVIEQUERY);
+    setQuerySearch(localStorage.getItem("movie_query"));
+    navigate("/search");
   };
 
   return (
-    <div className="navbar  rounded-2xl back shadow-lg p-2 z-50">
+    <div className="navbar rounded-2xl back shadow-lg p-2 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -62,7 +66,11 @@ function Navbar() {
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-bottom dropdown-end ">
-          <div tabIndex={0} role="button" className="m-1 btn btn-ghost btn-circle">
+          <div
+            tabIndex={0}
+            role="button"
+            className="m-1 btn btn-ghost btn-circle"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -85,6 +93,8 @@ function Navbar() {
             <li>
               <form onSubmit={handleSubmit}>
                 <input
+                  autoComplete="true"
+                  element="input"
                   name="movienav"
                   type="text"
                   placeholder="Star Wars, Avengers..."

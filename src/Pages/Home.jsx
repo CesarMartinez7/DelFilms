@@ -6,7 +6,7 @@ import Marqueee from "../Components/Marquee";
 const Home = () => {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-36">
         <Main />
         <Marqueee></Marqueee>
         <Data />

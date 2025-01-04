@@ -8,7 +8,10 @@ function Data() {
     const [movies, setMovies] = useState([]);
     const [firstSession, setFirstSession] = useState(true);
 
-    const url = `https://api.themoviedb.org/3/search/movie?query=${querySearch}`;
+    const moviee = localStorage.getItem("movie_query") == null || undefined ? "dragon ball" : localStorage.getItem("movie_query");
+
+
+    const url = `https://api.themoviedb.org/3/search/movie?query=${moviee}`;
     const popularMoviesURL = "https://api.themoviedb.org/3/movie/popular?language=en-US"
 
     const options = {
@@ -18,19 +21,23 @@ function Data() {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM'
         }
     };
+    const sesionClean = localStorage.getItem("firstSession") == "true" ? true : false;
+    
     useEffect(() => {
-        setFirstSession(false);
-        fetch(firstSession === true ? popularMoviesURL : url, options)
+        fetch(sesionClean  ? popularMoviesURL : url, options)
             .then(res => res.json())
             .then(json => {
                 if (json.results.length == 0) {
                     window.alert("No se encontraron resultados")
                 } else {
+                    ref.current.scrollIntoView({ behavior: 'smooth' });
                     setMovies(json.results)
                 }
             })
             .catch(err => console.error(err));
     }, [querySearch]);
+
+
 
 
     const handleSubmit = (e) => {
@@ -42,7 +49,6 @@ function Data() {
         }
         setQueryMovie(MOVIE);
     };
-
 
     return (
         <div>

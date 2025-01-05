@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Breakcumbs from "../Components/Breakcumbs";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 
 const backGround = (data) => {
@@ -16,6 +17,7 @@ const Movie = () => {
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}`;
   const [data, setData] = useState(null);
+  const movieArrayFav = new Array();
   const opciones = {
     method: "GET",
     headers: {
@@ -25,6 +27,10 @@ const Movie = () => {
     },
   };
   
+  localStorage.setItem("movieFavorite", JSON.stringify(movieArrayFav));
+  console.log(localStorage.getItem("movieFavorite"));
+  
+
   useEffect(() => {
     fetch(URL, opciones)
     .then((res) => res.json())
@@ -58,7 +64,16 @@ const Movie = () => {
                 </li>
               ))}
             </ul>
-            <h3 className="font-semibold text-wrap text-xl">Synopsis</h3>
+            <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">Synopsis</h3>
+            <button className="w-fit h-fit max-h-fit flex justify-center font-light text-sm" onClick={(e) => {
+              const movieArrayFav = JSON.parse(localStorage.getItem("movieFavorite")) || [];
+              movieArrayFav.push(data?.id);
+              localStorage.setItem("movieFavorite", JSON.stringify(movieArrayFav));
+              window.alert((localStorage.getItem("movieFavorite")));
+            }}>
+              <Icon icon="solar:add-circle-broken" width="24" height="24" />
+            </button>
+            
             <p className="text-gray-400 text-pretty font-extralight">
               {data?.overview}
             </p>
@@ -101,7 +116,7 @@ const Movie = () => {
           </p>
           <iframe
             src={`https://vidlink.pro/movie/${id}?primaryColor=ff2025&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=false&nextbutton=true`}
-            frameborder="0"
+            frameBorder="0"
             className="h-full w-full"
             allowFullScreen
           ></iframe>

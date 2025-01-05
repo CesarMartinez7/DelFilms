@@ -22,6 +22,8 @@ export const AppThemeContext = createContext(null);
 const Home = lazy(() => import("./Pages/Home"));
 const Movie = lazy(() => import("./Pages/Movie"));
 const MainPage = lazy(() => import("./Components/Main"));
+const Favorite = lazy(() => import("./Pages/Favorite"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
 
 function App() {
   const [querySearch, setQuerySearch] = useState("");
@@ -44,9 +46,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movie/:id" element={<Movie />} />
-            <Route path="*" element={<h1>Not Found</h1>} />
+            <Route path="*" element={<NotFound/>} />
             <Route path="/main" element={<MainPage />} />
             <Route path="/search" element={<Data></Data>} />
+            <Route path="/favorite" element={<Favorite arrayLocalStorage={JSON.parse(localStorage.getItem("movieFavorite"))}></Favorite>} />
           </Routes>
           <div>
           <Footer />

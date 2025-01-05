@@ -3,11 +3,11 @@ import { Icon } from "@iconify/react";
 
 function Breakcumbs({ movie = "Movie" }) {
     return (
-        <div className="breadcrumbs text-sm">
+        <div className="breadcrumbs text-sm mx-7">
             <ul>
                 <li>
                     <a href="/" className="inline-grid items-center gap-2">
-                    <Icon icon="solar:home-bold" width="17" height="17" />
+                    <Icon icon="iconoir:home" width="18" height="18" />
                         Home
                     </a>
                 </li>

@@ -105,7 +105,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box back -z-50 w-auto p-2 shadow bg-slate-950"
+            className="dropdown-content menu rounded-box back w-auto p-2 shadow bg-slate-950 max-h-screen overflow-y-auto"
           >
             <li>
               <form onSubmit={handleSubmit}>
@@ -145,7 +145,7 @@ function Navbar() {
             <Icon icon="solar:moon-bold" width="20" height="21" />
           )}
         </button>
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost btn-circle" onClick={() => navigate("/favorite")}>
           <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"

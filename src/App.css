@@ -8,6 +8,23 @@
 } */
 
 
+/* Asegúrate de que el contenedor principal tenga una altura mínima del 100% */
+html, body, #root {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Asegúrate de que el footer esté siempre en la parte inferior */
+footer {
+  margin-top: auto;
+}
+
+/* Ajusta el z-index para asegurarte de que el dropdown se muestre encima */
+.dropdown-content {
+  z-index: 50;
+}
+
 .card {
     backdrop-filter: blur(1px) saturate(13%);
     -webkit-backdrop-filter: blur(5px) saturate(13%);
@@ -20,9 +37,27 @@
 .back{
   backdrop-filter: blur(1px) saturate(13%);
   background: rgba(12, 12, 12, 0.85);
+  z-index: 999;
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
+.toCenteer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 
+
+.alto {
+  z-index: 2147483647;
+}
+
+
+.toCenter {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,600%);
+}
 
 .toto:hover{
   transition: all 0.3s;

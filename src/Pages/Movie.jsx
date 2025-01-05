@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Breakcumbs from "../Components/Breakcumbs";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import MenuToolTip from "../Components/MenuTooltip";
 
 
 const backGround = (data) => {
@@ -29,7 +30,7 @@ const Movie = () => {
   
   localStorage.setItem("movieFavorite", JSON.stringify(movieArrayFav));
   console.log(localStorage.getItem("movieFavorite"));
-  
+
 
   useEffect(() => {
     fetch(URL, opciones)
@@ -45,6 +46,7 @@ const Movie = () => {
   return (
     <section>
       <main className="imagene">
+        <MenuToolTip/>
         <Breakcumbs movie={data?.title} />
         <div className="text-white grid grid-cols-1 md:grid-cols-2 gap-5 xl:p-12 p-4 md:p-12 mt-12 md:mt-0 ">
           <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2">
@@ -66,7 +68,8 @@ const Movie = () => {
             </ul>
             <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">Synopsis</h3>
             <button className="w-fit h-fit max-h-fit flex justify-center font-light text-sm" onClick={(e) => {
-              const movieArrayFav = JSON.parse(localStorage.getItem("movieFavorite")) || [];
+              const movieArrayFav = JSON.parse(localStorage.getItem("movieFavorite"));
+              alert(movieArrayFav)
               movieArrayFav.push(data?.id);
               localStorage.setItem("movieFavorite", JSON.stringify(movieArrayFav));
               window.alert((localStorage.getItem("movieFavorite")));

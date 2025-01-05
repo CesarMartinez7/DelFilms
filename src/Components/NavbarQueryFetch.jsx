@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom"
 export default function NavbarQueryFetch({movie, index}) {
   const navigate = useNavigate()
     return(
-        <li key={index} >
-                <a className="flex items-center content-center" title={movie?.overview} onClick={(e) => {
+        <li key={index} className="alto" >
+                <a className="flex items-center content-center alto" title={movie?.overview} onClick={(e) => {
                   e.preventDefault()
                   navigate(`/movie/${movie.id}`)
                 }}>

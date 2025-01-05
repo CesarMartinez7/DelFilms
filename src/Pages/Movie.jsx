@@ -5,48 +5,70 @@ import Breakcumbs from "../Components/Breakcumbs";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import MenuToolTip from "../Components/MenuTooltip";
 
-
 const backGround = (data) => {
   const imageneBack = document.querySelector(".imagene");
-  if(imageneBack){
+  if (imageneBack) {
     imageneBack.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.911) 44%, rgba(0,0,0,1) 90%),url('https://image.tmdb.org/t/p/w500${data?.backdrop_path}')`;
   }
-}
-
+};
 
 const Movie = () => {
+  
+ 
+
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}`;
   const [data, setData] = useState(null);
-  const movieArrayFav = new Array();
+  const [movieFavorite, setMovieFavorite] = useState([]);
   const opciones = {
     method: "GET",
     headers: {
       accept: "application/json",
       Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM",
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM",
     },
   };
-  
-  localStorage.setItem("movieFavorite", JSON.stringify(movieArrayFav));
+
+  localStorage.setItem("movieFavorite", JSON.stringify(movieFavorite));
   console.log(localStorage.getItem("movieFavorite"));
 
+  const handleAddToFavorites = () => {
+    if (data?.id) {
+      // Obtener el array actual de favoritos
+      const movieArrayFav = JSON.parse(localStorage.getItem("movieFavorite")) || [];
+  
+      // Agregar el nuevo ID si no está ya en la lista
+      if (!movieArrayFav.includes(data.id)) {
+        const updatedFavorites = [...movieArrayFav, data.id];
+        
+        // Actualizar el estado
+        setMovieFavorite(updatedFavorites);
+        
+        // Guardar en localStorage
+        localStorage.setItem("movieFavorite", JSON.stringify(updatedFavorites));
+        
+        console.log("Favoritos actualizados:", updatedFavorites);
+        alert("Película añadida a favoritos.");
+      } else {
+        alert("Esta película ya está en favoritos.");
+      }
+    }
+  };
 
   useEffect(() => {
     fetch(URL, opciones)
-    .then((res) => res.json())
-    .then((json) => {
-      console.log(json);
-      setData(json);
-    })
-    .catch((err) => console.error(err));
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setData(json);
+      })
+      .catch((err) => console.error(err));
   }, [id, URL]);
 
-  
   return (
     <section>
       <main className="imagene">
-        <MenuToolTip/>
+        <MenuToolTip />
         <Breakcumbs movie={data?.title} />
         <div className="text-white grid grid-cols-1 md:grid-cols-2 gap-5 xl:p-12 p-4 md:p-12 mt-12 md:mt-0 ">
           <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2">
@@ -66,17 +88,16 @@ const Movie = () => {
                 </li>
               ))}
             </ul>
-            <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">Synopsis</h3>
-            <button className="w-fit h-fit max-h-fit flex justify-center font-light text-sm" onClick={(e) => {
-              const movieArrayFav = JSON.parse(localStorage.getItem("movieFavorite"));
-              alert(movieArrayFav)
-              movieArrayFav.push(data?.id);
-              localStorage.setItem("movieFavorite", JSON.stringify(movieArrayFav));
-              window.alert((localStorage.getItem("movieFavorite")));
-            }}>
+            <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
+              Synopsis
+            </h3>
+            <button
+              className="w-fit h-fit max-h-fit flex justify-center font-light text-sm"
+              onClick={handleAddToFavorites}
+            >
               <Icon icon="solar:add-circle-broken" width="24" height="24" />
             </button>
-            
+
             <p className="text-gray-400 text-pretty font-extralight">
               {data?.overview}
             </p>
@@ -125,7 +146,7 @@ const Movie = () => {
           ></iframe>
         </div>
       </main>
-      </section>
+    </section>
   );
 };
 

@@ -29,8 +29,6 @@ const Movie = () => {
     },
   };
 
-  localStorage.setItem("movieFavorite", JSON.stringify(movieFavorite));
-  console.log(localStorage.getItem("movieFavorite"));
 
   const handleAddToFavorites = () => {
     if (data?.id) {

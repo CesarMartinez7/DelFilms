@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useNavigate } from "react-router-dom";
 
+
 export default function MenuToolTip() {
   const navigate = useNavigate();
   return (
@@ -22,8 +23,21 @@ export default function MenuToolTip() {
         </a>
       </li>
       <li>
-        <a className="tooltip" data-tip="Stats" href="/favorite" >
+        <a className="tooltip" data-tip="Favoritos" href="/favorite" >
         <Icon icon="iconoir:bookmark" width="18" height="18" />
+        </a>
+      </li>
+      <li>
+        <a className="tooltip" data-tip="Copiar Link" onClick={()=>{
+          const urlLocal = window.location
+          navigator.clipboard.writeText(urlLocal).then(()=>{
+            console.log("texto copiado")
+          }).then( err => {
+            console.log(err)
+            console.log("Error arriba")
+          })
+        }}>
+        <Icon icon="solar:share-bold" width="18" height="18" />
         </a>
       </li>
     </ul>

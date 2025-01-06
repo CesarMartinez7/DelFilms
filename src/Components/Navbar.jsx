@@ -41,7 +41,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar rounded-2xl back shadow-lg p-2 z-50">
+    <div className="navbar rounded-2xl back shadow-lg p-2 z-50 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -132,12 +132,12 @@ function Navbar() {
             <Icon icon="solar:moon-bold" width="20" height="21" />
           )}
         </button>
-        <button className="btn btn-ghost btn-circle" onClick={() => navigate("/favorite")}>
+        <a className="btn btn-ghost btn-circle" href="/favorite">
           <div className="indicator">
           <Icon icon="iconoir:bookmark" width="22" height="22" />
             <span className="badge badge-xs badge-primary indicator-item"></span>
           </div>
-        </button>
+        </a>
       </div>
     </div>
   );

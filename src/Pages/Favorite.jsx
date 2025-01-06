@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import Alert from "../Components/Alert";
+
 
 const opciones = {
   method: "GET",
@@ -10,10 +13,14 @@ const opciones = {
   },
 };
 
+
+
+
 export default function Favorite({ arrayLocalStorage }) {
-    const navigate = useNavigate()
-  const [fetching, setFetching] = useState([]); // Estado inicial vacío
-  const [loaded, setLoaded] = useState(false); // Control para evitar solicitudes repetidas
+  console.log(arrayLocalStorage)
+  const [isOpen,setIsOpen] = useState(true)
+  const [fetching, setFetching] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   const handleFetching = async (movie) => {
     const URL = `https://api.themoviedb.org/3/movie/${movie}`;
@@ -43,19 +50,24 @@ export default function Favorite({ arrayLocalStorage }) {
 
   if (fetching.length === 0) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <h1 className="text-4xl">No Favorite</h1>
+      <div className="flex justify-center flex-col items-center h-screen">
+        <h3 className="font-bold text-[6rem]">{"T_T"}</h3>
+      <h2 className="text-2xl">Sorry, dont have favorite</h2>
       </div>
     );
-  } else {
+  } else if (loaded) {
     return (
-      <div className="p-4">
+      <>
+        <Alert isOpen={isOpen} setIsOpen={setIsOpen}></Alert>
+      <div className={isOpen ? "p-4 filter grayscale h-screen blur-sm" :"p-4 h-screen"}>
         <h3 className="font-semibold text-2xl">Tus Favoritos</h3>
         <ul className="p-4 grid grid-cols-9 gap-3">
           {fetching.map((movie) => (
-            <a key={movie.id} className=" p-2 rounded" onClick={(e)=>
-                navigate(`/movie/${movie.id}`)
-            }>
+            <a
+              key={movie.id}
+              className=" p-2 rounded"
+              onClick={(e) => navigate(`/movie/${movie.id}`)}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
@@ -66,6 +78,7 @@ export default function Favorite({ arrayLocalStorage }) {
           ))}
         </ul>
       </div>
+      </>
     );
   }
 }

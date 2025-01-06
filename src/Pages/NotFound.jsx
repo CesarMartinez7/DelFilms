@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <section className="flex justify-center flex-col gap-3 items-center h-screen">
       <h3 className="font-bold text-[6rem]">{"T_T"}</h3>
-      <h1 className="text-2xl">Sorry, we can't find this page.</h1>
+      <h2 className="text-2xl">Sorry, we can't find this page.</h2>
       <div className="relative mt-4 inline-grid gap-3 grid-cols-3">
         <button className="btn" onClick={()=>{
             navigation("/")

@@ -53,6 +53,33 @@ footer {
 }
 
 
+.animation-alert{
+  animation-name: alert;
+  animation-duration: 500ms;
+  transition: all;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 50%;
+  left: 100%;
+
+}
+
+@keyframes alert {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  100% {
+    top: 50%;
+    left: 100%;
+    position: sticky;
+    position: -webkit-sticky;
+  }
+}
+
+
+
+
 .toCenter {
   top: 50%;
   left: 50%;

@@ -27,6 +27,7 @@ const NotFound = lazy(() => import("./Pages/NotFound"));
 
 function App() {
   const [querySearch, setQuerySearch] = useState("");
+  const arrayLocalStorage = JSON.parse(localStorage.getItem("movieFavorite")) === null ? [] : JSON.parse(localStorage.getItem("movieFavorite")) 
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem("isDark");
     return savedTheme ? JSON.parse(savedTheme) : true;
@@ -49,7 +50,7 @@ function App() {
             <Route path="*" element={<NotFound/>} />
             <Route path="/main" element={<MainPage />} />
             <Route path="/search" element={<Data></Data>} />
-            <Route path="/favorite" element={<Favorite arrayLocalStorage={JSON.parse(localStorage.getItem("movieFavorite"))}></Favorite>} />
+            <Route path="/favorite" element={<Favorite arrayLocalStorage={arrayLocalStorage}></Favorite>} />
           </Routes>
           <div>
           <Footer />

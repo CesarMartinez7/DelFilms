@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Alert from "../Components/Alert";
 
-
 const opciones = {
   method: "GET",
   headers: {
@@ -13,12 +12,9 @@ const opciones = {
   },
 };
 
-
-
-
 export default function Favorite({ arrayLocalStorage }) {
-  console.log(arrayLocalStorage)
-  const [isOpen,setIsOpen] = useState(true)
+  console.log(arrayLocalStorage);
+  const [isOpen, setIsOpen] = useState(true);
   const [fetching, setFetching] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -52,32 +48,39 @@ export default function Favorite({ arrayLocalStorage }) {
     return (
       <div className="flex justify-center flex-col items-center h-screen">
         <h3 className="font-bold text-[6rem]">{"T_T"}</h3>
-      <h2 className="text-2xl">Sorry, dont have favorite</h2>
+        <h2 className="text-2xl">Sorry, dont have favorite</h2>
       </div>
     );
   } else if (loaded) {
     return (
       <>
         <Alert isOpen={isOpen} setIsOpen={setIsOpen}></Alert>
-      <div className={isOpen ? "p-4 filter grayscale h-screen blur-sm" :"p-4 h-screen"}>
-        <h3 className="font-semibold text-2xl">Tus Favoritos</h3>
-        <ul className="p-4 grid grid-cols-9 gap-3">
-          {fetching.map((movie) => (
-            <a
-              key={movie.id}
-              className=" p-2 rounded"
-              onClick={(e) => navigate(`/movie/${movie.id}`)}
-            >
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="w-full h-auto rounded-2xl"
-              />
-              <h4 className="mt-2 text-center font-semibold">{movie.title}</h4>
-            </a>
-          ))}
-        </ul>
-      </div>
+        <div
+          className={
+            isOpen ? "p-4 filter grayscale h-screen blur-sm" : "p-4 h-screen"
+          }
+        >
+          <h3 className="font-semibold text-2xl">Tus Favoritos</h3>
+          <ul className="p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-8 gap-3">
+            {fetching.map((movie) => (
+              <a
+                key={movie?.id}
+                className=" p-2 rounded"
+                href={`/movie/${movie?.id}`}
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
+                  alt={movie.title}
+                  className="w-full h-auto rounded-2xl"
+                />
+                <h4 className="mt-2 text-center font-semibold">
+                  {movie?.title}
+                </h4>
+                
+              </a>
+            ))}
+          </ul>
+        </div>
       </>
     );
   }

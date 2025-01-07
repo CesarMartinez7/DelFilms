@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Breakcumbs from "../Components/Breakcumbs";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import MenuToolTip from "../Components/MenuTooltip";
+import Stat from "../Components/Stat";
 
 const backGround = (data) => {
   const imageneBack = document.querySelector(".imagene");
@@ -13,9 +14,6 @@ const backGround = (data) => {
 };
 
 const Movie = () => {
-  
- 
-
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}`;
   const [data, setData] = useState(null);
@@ -29,22 +27,22 @@ const Movie = () => {
     },
   };
 
-
   const handleAddToFavorites = () => {
     if (data?.id) {
       // Obtener el array actual de favoritos
-      const movieArrayFav = JSON.parse(localStorage.getItem("movieFavorite")) || [];
-  
+      const movieArrayFav =
+        JSON.parse(localStorage.getItem("movieFavorite")) || [];
+
       // Agregar el nuevo ID si no está ya en la lista
       if (!movieArrayFav.includes(data.id)) {
         const updatedFavorites = [...movieArrayFav, data.id];
-        
+
         // Actualizar el estado
         setMovieFavorite(updatedFavorites);
-        
+
         // Guardar en localStorage
         localStorage.setItem("movieFavorite", JSON.stringify(updatedFavorites));
-        
+
         console.log("Favoritos actualizados:", updatedFavorites);
         alert("Película añadida a favoritos.");
       } else {
@@ -73,33 +71,45 @@ const Movie = () => {
             <div className="text-sm font-    text-gray-300 flex flex-col gap-2">
               <code>{data?.tagline}</code>
             </div>
-            <h2 className="text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
+            <h2 className="text-4xl md:text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
               {data?.title}
             </h2>
-            <ul className="mt flex gap-2 flex-wrap flex-row">
-              {data?.genres?.map((genre) => (
-                <li
-                  className="p-2 bg-[#1414147e] w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
-                  key={genre.id}
+            <div className="flex justify-between">
+              <ul className="mt flex gap-2 flex-wrap flex-row">
+                {data?.genres?.map((genre) => (
+                  <li
+                    className="p-2  btn btn-sm  w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
+                    key={genre.id}
+                  >
+                    {genre.name}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-2">
+                <Link
+                  className="w-fit h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm tooltip rounded-md"
+                  to={`https://vidlink.pro/movie/${data?.id}`}
+                  data-tip="Play"
                 >
-                  {genre.name}
-                </li>
-              ))}
-            </ul>
+                  <Icon icon="tabler:play" width="18" height="18" /> Play
+                </Link>
+                <button
+                  className="w-fit h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm rounded-md tooltip"
+                  onClick={handleAddToFavorites}
+                  data-tip="Añadir a Favoritos"
+                >
+                  <Icon icon="hugeicons:add-01" width="17" height="17" /> Favoritos
+                </button>
+              </div>
+            </div>
             <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
               Synopsis
             </h3>
-            <button
-              className="w-fit h-fit max-h-fit flex justify-center font-light text-sm"
-              onClick={handleAddToFavorites}
-            >
-              <Icon icon="solar:add-circle-broken" width="24" height="24" />
-            </button>
 
-            <p className="text-gray-400 text-pretty font-extralight">
+            <p className=" text-gray-400 text-pretty font-extralight">
               {data?.overview}
             </p>
-            <div className="stats stats-vertical lg:stats-horizontal bg-transparent mt-4 shadow">
+            <div className="stats stats-vertical lg:stats-horizontal bg-transparent mt-4 ">
               <div className="stat">
                 <div className="stat-title">Lenguaje</div>
                 <div className="stat-value">
@@ -131,17 +141,6 @@ const Movie = () => {
               className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
             />
           </div>
-        </div>
-        <div className="w-[90vw] h-[90vh] md:w-[90vw] md:h-[90vh] mx-auto p-4 flex flex-col gap-7 t-5">
-          <p className="font-extrabold text-5xl text-center">
-            Mirar {data?.title}
-          </p>
-          <iframe
-            src={`https://vidlink.pro/movie/${id}?primaryColor=ff2025&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=false&nextbutton=true`}
-            frameBorder="0"
-            className="h-full w-full"
-            allowFullScreen
-          ></iframe>
         </div>
       </main>
     </section>

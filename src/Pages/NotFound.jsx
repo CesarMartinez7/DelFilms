@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function NotFound() {
     const navigation = useNavigate()
   return (
@@ -12,15 +12,15 @@ export default function NotFound() {
         }}>
         <Icon icon="iconoir:home" width="24" height="24" />
             Inicio</button>
-        <button className="btn btn-neutral"  onClick={()=>{
-            navigation("https://github.com/CesarMartinez7")
-        }}>
-        <Icon icon="iconoir:github" width="24" height="24" />
-        Github
-        </button>
-        <button className="btn btn-primary"  onClick={()=>{
+        <button className="btn btn-active btn-ghost "  onClick={()=>{
             navigation("/search")
-        }}>Busqueda</button>
+        }}>
+          <Icon icon="tabler:search" width="18" height="18" />
+          Busqueda</button>
+        <Link to={"https://github.com/CesarMartinez7/"} className="btn btn-neutral" target="_blank">
+        <Icon icon="tabler:brand-github" width="24" height="24" />
+          Github
+        </Link>
       </div>
     </section>
   );

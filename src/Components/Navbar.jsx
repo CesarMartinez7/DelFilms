@@ -77,7 +77,7 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl" href="/">
+        <a className="text-xl font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text" href="/">
           {"DelFilms >.<"}
         </a>
       </div>
@@ -127,9 +127,9 @@ function Navbar() {
           }}
         >
           {isDark ? (
-            <Icon icon="solar:sun-2-bold" width="24" height="24" />
+            <Icon icon="solar:sun-2-linear" width="22" height="22" />
           ) : (
-            <Icon icon="solar:moon-bold" width="20" height="21" />
+            <Icon icon="solar:moon-linear" width="22" height="22" />
           )}
         </button>
         <a className="btn btn-ghost btn-circle" href="/favorite">

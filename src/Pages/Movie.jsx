@@ -17,6 +17,23 @@ import Download from "../Components/Dowload";
 
 const API_TOKEN = import.meta.env.VITE_API_TOKEN
 
+
+const Horas = ({minutos}) => {
+  if(minutos >= 59){
+    let horas = minutos / 60
+    horas = horas.toString() 
+    return(
+      <span>{`${horas.substring(0,1)}h ${horas.substring(2,3)}min`}</span>
+    )
+  }else{
+    return(
+      <span>{`${minutos}m`}</span>
+
+    )
+  }
+} 
+
+
 const Movie = () => {
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}`;
@@ -60,6 +77,8 @@ const Movie = () => {
       
   }, [id, URL]);
 
+  
+
   return (
     <section>
       <main className="imagene">
@@ -67,12 +86,16 @@ const Movie = () => {
         <Breakcumbs movie={data?.title} />
         <div className="text-white grid grid-cols-1 md:grid-cols-2 gap-5 xl:p-12 p-4 md:p-12 mt-12 md:mt-0 ">
           <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2">
-            <div className="text-sm font-    text-gray-300 flex flex-col gap-2">
+            <div className="text-sm text-gray-300 flex flex-col gap-2">
               <code>{data?.tagline}</code>
             </div>
             <h2 className="text-4xl  md:text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
               {data?.title}
             </h2>
+            <p className="font-extralight text-sm">
+              <Horas minutos={data?.runtime}/>
+              <span>{data?.adult}</span>
+            </p>
             <div className="flex justify-between">
             <div className="flex gap-2">
                 <Link
@@ -90,6 +113,7 @@ const Movie = () => {
                   <Icon icon="hugeicons:add-01" width="17" height="17" /> Favoritos
                 </button>
               </div>
+              {/* <div>dfdf</div> */}
             </div>
             <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
               Synopsis
@@ -102,7 +126,7 @@ const Movie = () => {
             <ul className="mt flex gap-2 flex-wrap flex-row">
                 {data?.genres?.map((genre) => (
                   <li
-                    className="p-2  btn btn-sm  w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
+                    className="p-2  btn btn-sm back w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
                     key={genre.id}
                   >
                     {genre.name}

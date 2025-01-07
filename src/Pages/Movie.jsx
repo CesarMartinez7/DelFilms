@@ -6,14 +6,14 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import MenuToolTip from "../Components/MenuTooltip";
 import Stat from "../Components/Stat";
 
-const API_TOKEN = import.meta.env.VITE_API_TOKEN
+// const backGround = (data) => {
+//   const imageneBack = document.querySelector(".imagene");
+//   if (imageneBack) {
+//     imageneBack.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.911) 44%, rgba(0,0,0,1) 90%),url('https://image.tmdb.org/t/p/w500${data?.backdrop_path}')`;
+//   }
+// };
 
-const backGround = (data) => {
-  const imageneBack = document.querySelector(".imagene");
-  if (imageneBack) {
-    imageneBack.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.911) 44%, rgba(0,0,0,1) 90%),url('https://image.tmdb.org/t/p/w500${data?.backdrop_path}')`;
-  }
-};
+const API_TOKEN = import.meta.env.VITE_API_TOKEN
 
 const Movie = () => {
   const { id } = useParams();
@@ -139,7 +139,7 @@ const Movie = () => {
           </div>
           <div className="w-full grid place-content-center place-items-center">
             <img
-              src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
               className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
             />
           </div>

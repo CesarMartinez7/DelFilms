@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { data, Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Breakcumbs from "../Components/Breakcumbs";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -27,11 +27,23 @@ const Horas = ({minutos}) => {
     )
   }else{
     return(
-      <span>{`${minutos}m`}</span>
-
+      <span>{`${minutos}m`}</span> 
     )
   }
-} 
+}
+ 
+const IsAdultMovie = ({dataAdult}) => {
+  const age = dataAdult === "false" ? 18 : 17
+  if(age < 18){
+    return(
+      <span>Para menores</span>
+    )
+  }else{
+    return(
+      <span>Para menores de 18</span>
+    )
+  }
+}
 
 
 const Movie = () => {
@@ -94,7 +106,6 @@ const Movie = () => {
             </h2>
             <p className="font-extralight text-sm">
               <Horas minutos={data?.runtime}/>
-              <span>{data?.adult}</span>
             </p>
             <div className="flex justify-between">
             <div className="flex gap-2">

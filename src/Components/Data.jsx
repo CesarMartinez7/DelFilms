@@ -3,6 +3,8 @@ import Marqueee from './Marquee';
 import { AppThemeContext } from '../App.jsx';
 import HoverCard from './HoverCard.jsx';
 
+const API_TOKEN = import.meta.env.VITE_API_TOKEN
+
 
 
 function Data() {
@@ -23,7 +25,7 @@ function Data() {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM'
+            Authorization: `Bearer ${API_TOKEN}`
         }
     };
     const sesionClean = localStorage.getItem("firstSession") === "true" ? true : false;

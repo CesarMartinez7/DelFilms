@@ -59,10 +59,10 @@ export default function Favorite({ arrayLocalStorage }) {
         <Alert isOpen={isOpen} setIsOpen={setIsOpen}></Alert>
         <div
           className={
-            isOpen ? "p-4 filter grayscale h-screen blur-sm" : "p-4 h-screen"
+            isOpen ? "p-4 filter grayscale h-screen blur-[1px] " : "p-4 h-screen"
           }
         >
-          <h3 className="font-semibold text-2xl">Tus Favoritos</h3>
+          <h3 className="font-semibold text-2xl my-7">Tus Favoritos</h3>
           <ul className="p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-8 gap-3">
             {fetching.map((movie) => (
               <a

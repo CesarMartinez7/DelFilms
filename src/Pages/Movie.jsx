@@ -113,7 +113,6 @@ const Movie = () => {
                   <Icon icon="hugeicons:add-01" width="17" height="17" /> Favoritos
                 </button>
               </div>
-              {/* <div>dfdf</div> */}
             </div>
             <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
               Synopsis

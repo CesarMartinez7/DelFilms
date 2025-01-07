@@ -52,7 +52,10 @@ footer {
   z-index: 2147483647;
 }
 
-
+::selection{
+  color: white;
+  background-color: #2f2f2f;
+}
 .animation-alert{
   animation-name: alert;
   animation-duration: 500ms;

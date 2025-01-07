@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function MenuToolTip() {
   const navigate = useNavigate();
   return (
-    <ul className="menu menu-horizontal fixed toCenter bg-base-200 rounded-box mt-6 back ">
+    <ul className="menu menu-horizontal fixed toCenter bg-base-200 rounded-box mt-6 back rounded-xl ">
       <li>
         <button
           className="tooltip"

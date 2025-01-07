@@ -134,7 +134,7 @@ const Movie = () => {
           </div>
           <div className="w-full grid place-content-center place-items-center">
             <img
-              src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+              src={data?.poster_path === null || undefined ? "https://lightwidget.com/wp-content/uploads/localhost-file-not-found-480x480.avif"  : `https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
               className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
             />
           </div>

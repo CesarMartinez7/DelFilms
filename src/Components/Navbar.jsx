@@ -105,7 +105,6 @@ function Navbar() {
                   type="text"
                   onChange={(e) => {
                     setMovie(e.target.value);
-                    console.log(movie);
                   }}
                   placeholder="Star Wars, Avengers..."
                   className={

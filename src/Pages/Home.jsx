@@ -1,5 +1,4 @@
 
-import Data from "../Components/Data";
 import Main from "../Components/Main";
 import Marqueee from "../Components/Marquee";
 

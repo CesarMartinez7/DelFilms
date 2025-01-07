@@ -1,6 +1,8 @@
+import GridMain from "./GridMain";
+
 function Main() {
   return (
-    <div className="md:mt-0 h-screen grid grid-cols-1 xl:grid-cols-2 xl:p-20 lg:p-20 p-5">
+    <div className=" grid grid-cols-1 xl:grid-cols-2 xl:p-20 lg:p-20 w-full">
       <div className="flex flex-col items-center justify-center gap-2 h-screen md:h-screen  text-center lg:text-left lg:items-start">
         <h1 className="text-5xl lg:text-7xl font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text">
           {'DelFilms >.<'}
@@ -12,7 +14,7 @@ function Main() {
           Explora y disfruta tus películas favoritas.
         </p>
       </div>
-      <div className="flex justify-center items-center"></div>
+        <GridMain></GridMain>
     </div>
   );
 }

@@ -16,7 +16,6 @@ const opciones = {
 };
 
 export default function Favorite({ arrayLocalStorage }) {
-  console.log(arrayLocalStorage);
   const [isOpen, setIsOpen] = useState(true);
   const [fetching, setFetching] = useState([]);
   const [loaded, setLoaded] = useState(false);

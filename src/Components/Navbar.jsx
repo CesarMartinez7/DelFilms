@@ -29,7 +29,6 @@ function Navbar() {
     fetch(URL, opciones)
       .then((response) => response.json())
       .then((data) => setData(data.results));
-    console.log(querySearch);
   }, [movie, querySearch, URL]);
 
   const handleSubmit = (e) => {
@@ -62,7 +61,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow back"
+            className="menu dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow back rounded-md" 
           >
             <li>
               <a href="/">Inicio</a>

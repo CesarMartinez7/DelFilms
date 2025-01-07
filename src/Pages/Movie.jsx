@@ -45,7 +45,6 @@ const Movie = () => {
         // Guardar en localStorage
         localStorage.setItem("movieFavorite", JSON.stringify(updatedFavorites));
 
-        console.log("Favoritos actualizados:", updatedFavorites);
         alert("Película añadida a favoritos.");
       } else {
         alert("Esta película ya está en favoritos.");
@@ -57,7 +56,6 @@ const Movie = () => {
     fetch(URL, opciones)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         setData(json);
       })
       .catch((err) => console.error(err));

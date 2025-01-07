@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo, useRef, useContext } from "react";
 import Marqueee from "./Marquee";
 import { AppThemeContext } from "../App.jsx";
 import HoverCard from "./HoverCard.jsx";
+import NoImage from "../assets/noImage.webp"
+
 
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 

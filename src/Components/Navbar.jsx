@@ -23,6 +23,7 @@ function Navbar() {
       Authorization:
         `Bearer ${API_TOKEN}`,
     },
+    mode: "cors"
   };
 
   const URL = `https://api.themoviedb.org/3/search/movie?query=${movie}`;

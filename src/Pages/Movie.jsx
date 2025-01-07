@@ -5,6 +5,7 @@ import Breakcumbs from "../Components/Breakcumbs";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import MenuToolTip from "../Components/MenuTooltip";
 import Stat from "../Components/Stat";
+import NoImage from "../assets/noImage.webp"
 
 // const backGround = (data) => {
 //   const imageneBack = document.querySelector(".imagene");
@@ -55,7 +56,7 @@ const Movie = () => {
       .then((json) => {
         setData(json);
       })
-      .catch((err) => console.error(err));
+      
   }, [id, URL]);
 
   return (
@@ -134,7 +135,7 @@ const Movie = () => {
           </div>
           <div className="w-full grid place-content-center place-items-center">
             <img
-              src={data?.poster_path === null || undefined ? "https://lightwidget.com/wp-content/uploads/localhost-file-not-found-480x480.avif"  : `https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+              src={data?.poster_path === null || undefined ? NoImage : `https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
               className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
             />
           </div>

@@ -70,27 +70,36 @@ const Movie = () => {
             <div className="text-sm font-    text-gray-300 flex flex-col gap-2">
               <code>{data?.tagline}</code>
             </div>
-            <h2 className="text-4xl md:text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
+            <h2 className="text-4xl  md:text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
               {data?.title}
             </h2>
             <div className="flex justify-between">
             <div className="flex gap-2">
                 <Link
-                  className="w-fit h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm tooltip rounded-md"
+                  className="h-fit max-h-fit flex justify-center font-light text-sm btn btn-wide glass tooltip rounded-xl"
                   to={`https://vidlink.pro/movie/${data?.id}`}
                   data-tip="Play"
                 >
                   <Icon icon="tabler:play" width="18" height="18" /> Play
                 </Link>
                 <button
-                  className="w-fit h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm rounded-md tooltip"
+                  className="w-fit h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm glass  rounded-md tooltip"
                   onClick={handleAddToFavorites}
                   data-tip="Añadir a Favoritos"
                 >
                   <Icon icon="hugeicons:add-01" width="17" height="17" /> Favoritos
                 </button>
               </div>
-              <ul className="mt flex gap-2 flex-wrap flex-row">
+            </div>
+            <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
+              Synopsis
+            </h3>
+
+            <p className=" text-gray-400 text-pretty font-extralight">
+              {data?.overview}
+            </p>
+            <h3 className="font-semibold text-wrap text-xl mb-2">Generos</h3>
+            <ul className="mt flex gap-2 flex-wrap flex-row">
                 {data?.genres?.map((genre) => (
                   <li
                     className="p-2  btn btn-sm  w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
@@ -100,15 +109,6 @@ const Movie = () => {
                   </li>
                 ))}
               </ul>
-              
-            </div>
-            <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
-              Synopsis
-            </h3>
-
-            <p className=" text-gray-400 text-pretty font-extralight">
-              {data?.overview}
-            </p>
             <div className="stats stats-vertical lg:stats-horizontal bg-transparent mt-4 ">
               <div className="stat">
                 <div className="stat-title">Lenguaje</div>

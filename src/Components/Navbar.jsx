@@ -82,8 +82,8 @@ function Navbar() {
           {"DelFilms >.<"}
         </a>
       </div>
-      <div className="navbar-end alto">
-        <div className="dropdown dropdown-bottom dropdown-end alto" onClick={() => inputRef.current.focus()}>
+      <div className="navbar-end alto" >
+        <button className="dropdown dropdown-bottom dropdown-end alto" title="Buscar tu película favorita" onClick={() => inputRef.current.focus()}>
           <div
             tabIndex={0}
             role="button"
@@ -117,7 +117,7 @@ function Navbar() {
               <NavbarQueryFetch movie={movie} index={index} key={index} />
             ))}
           </ul>
-        </div>
+        </button>
 
         <button
           className="btn btn-ghost btn-circle hover:animation- duration-500"

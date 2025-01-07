@@ -14,7 +14,7 @@ function Main() {
           Explora y disfruta tus películas favoritas.
         </p>
       </div>
-        <GridMain></GridMain>
+        {/* <GridMain></GridMain> */}
     </div>
   );
 }

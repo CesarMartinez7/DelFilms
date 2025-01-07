@@ -67,7 +67,7 @@ function Data() {
           {firstSession == true ? "" : "Peliculas Populares"}
         </h3>
         <div
-          className="grid grid-cols-3 -z-0 lg:grid-cols-7 xl:grid-cols-8 gap-2 md:grid-cols-5 xl:gap-4 p-6 mb-6"
+          className="grid grid-cols-3 -z-0 lg:grid-cols-7 xl:grid-cols-9 gap-2 md:grid-cols-5 xl:gap-4 p-6 mb-6"
           ref={ref}
         >
           {movies.map((movie) => (

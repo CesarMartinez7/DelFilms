@@ -31,20 +31,17 @@ const Movie = () => {
 
   const handleAddToFavorites = () => {
     if (data?.id) {
-      // Obtener el array actual de favoritos
       const movieArrayFav =
         JSON.parse(localStorage.getItem("movieFavorite")) || [];
 
-      // Agregar el nuevo ID si no está ya en la lista
       if (!movieArrayFav.includes(data.id)) {
         const updatedFavorites = [...movieArrayFav, data.id];
 
-        // Actualizar el estado
         setMovieFavorite(updatedFavorites);
 
-        // Guardar en localStorage
+        // Guardar en mi localStorage 🐒🐒🐒🐒
         localStorage.setItem("movieFavorite", JSON.stringify(updatedFavorites));
-
+        // Cambiar proximamente a alertas o mensajes
         alert("Película añadida a favoritos.");
       } else {
         alert("Esta película ya está en favoritos.");

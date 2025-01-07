@@ -6,6 +6,8 @@ import NavbarQueryFetch from "./NavbarQueryFetch";
 
 const html = document.querySelector("html");
 
+const API_TOKEN = import.meta.env.VITE_API_TOKEN
+
 function Navbar() {
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ function Navbar() {
     headers: {
       accept: "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmJjODM5MzE3OTYyMDJmZDhkOTkyNGJmMTU5ODdkZCIsIm5iZiI6MTczNDY0MzQyNy4yMDg5OTk5LCJzdWIiOiI2NzY0OGVlMzg3OWJmNTFjYzBlYmMwYTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3otbMt2GKapHm6NZ-2Qjqm0jIQTks77AaCbIT2EkBmM",
+        `Bearer ${API_TOKEN}`,
     },
   };
 
@@ -40,7 +42,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar rounded-2xl back shadow-lg p-2 z-50 ">
+    <div className="navbar rounded-2xl back shadow-lg p-0.5 z-50 sticky top-3">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -76,7 +78,7 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="text-xl font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text" href="/">
+        <a className="hidden md:flex font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text" href="/">
           {"DelFilms >.<"}
         </a>
       </div>
@@ -91,7 +93,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box back w-auto p-2 shadow bg-slate-950 max-h-screen overflow-y-auto alto"
+            className="dropdown-content menu rounded-box back w-auto p-2 shadow rounded-lg bg-slate-950 max-h-screen overflow-y-auto alto"
           >
             <li>
               <form onSubmit={handleSubmit} className="alto">

@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import MenuToolTip from "../Components/MenuTooltip";
 import Stat from "../Components/Stat";
 import NoImage from "../assets/noImage.webp"
+import Download from "../Components/Dowload";
 
 // const backGround = (data) => {
 //   const imageneBack = document.querySelector(".imagene");
@@ -73,17 +74,7 @@ const Movie = () => {
               {data?.title}
             </h2>
             <div className="flex justify-between">
-              <ul className="mt flex gap-2 flex-wrap flex-row">
-                {data?.genres?.map((genre) => (
-                  <li
-                    className="p-2  btn btn-sm  w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
-                    key={genre.id}
-                  >
-                    {genre.name}
-                  </li>
-                ))}
-              </ul>
-              <div className="flex gap-2">
+            <div className="flex gap-2">
                 <Link
                   className="w-fit h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm tooltip rounded-md"
                   to={`https://vidlink.pro/movie/${data?.id}`}
@@ -99,6 +90,17 @@ const Movie = () => {
                   <Icon icon="hugeicons:add-01" width="17" height="17" /> Favoritos
                 </button>
               </div>
+              <ul className="mt flex gap-2 flex-wrap flex-row">
+                {data?.genres?.map((genre) => (
+                  <li
+                    className="p-2  btn btn-sm  w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
+                    key={genre.id}
+                  >
+                    {genre.name}
+                  </li>
+                ))}
+              </ul>
+              
             </div>
             <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
               Synopsis
@@ -138,6 +140,7 @@ const Movie = () => {
               src={data?.poster_path === null || undefined ? NoImage : `https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
               className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
             />
+            <Download link={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}></Download>
           </div>
         </div>
       </main>

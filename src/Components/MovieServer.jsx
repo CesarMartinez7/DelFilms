@@ -11,11 +11,11 @@ export default function MovieServer() {
     <section className="h-screen min-h-fit flex flex-col justify-center items-center ">
         <h3 className="font-light text-5xl">Server</h3>
       <div className="inline-flex gap-3">
-        <Link className="inline-flex items-center btn btn-neutral gap-2" to={`https://vidlink.pro/movie/${id    }`}>
+        <Link className="inline-flex items-center glass btn btn-neutral gap-2" to={`https://vidlink.pro/movie/${id}`}>
           <Icon icon="solar:play-line-duotone" width="16" height="16" />
           Embed Link
         </Link>
-        <Link className="inline-flex items-center btn btn-neutral gap-2" to={`https://embed.su/embed/movie/${id}`}>
+        <Link className="inline-flex items-center glass btn btn-neutral gap-2" to={`https://embed.su/embed/movie/${id}`}>
           <Icon icon="solar:play-line-duotone" width="16" height="16" />
           VidLink Link
         </Link>

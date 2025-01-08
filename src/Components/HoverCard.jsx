@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import NoImage from "../assets/noImage.webp"
+import { Spoiler } from "spoiled";
+
 
 
 

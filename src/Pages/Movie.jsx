@@ -5,7 +5,7 @@ import Breakcumbs from "../Components/Breakcumbs";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import MenuToolTip from "../Components/MenuTooltip";
 import Stat from "../Components/Stat";
-import NoImage from "../assets/noImage.webp"
+import NoImage from "../assets/noImage.webp";
 import Download from "../Components/Dowload";
 
 // const backGround = (data) => {
@@ -15,36 +15,19 @@ import Download from "../Components/Dowload";
 //   }
 // };
 
-const API_TOKEN = import.meta.env.VITE_API_TOKEN
+const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
-
-const Horas = ({minutos}) => {
-  if(minutos >= 59){
-    let horas = minutos / 60
-    horas = horas.toString() 
-    return(
-      <span>{`${horas.substring(0,1)}h ${horas.substring(2,3)}min`}</span>
-    )
-  }else{
-    return(
-      <span>{`${minutos}m`}</span> 
-    )
+const Horas = ({ minutos }) => {
+  if (minutos >= 59) {
+    let horas = minutos / 60;
+    horas = horas.toString();
+    return (
+      <span>{`${horas.substring(0, 1)}h ${horas.substring(2, 3)}min`}</span>
+    );
+  } else {
+    return <span>{`${minutos}m`}</span>;
   }
-}
- 
-const IsAdultMovie = ({dataAdult}) => {
-  const age = dataAdult === "false" ? 18 : 17
-  if(age < 18){
-    return(
-      <span>Para menores</span>
-    )
-  }else{
-    return(
-      <span>Para menores de 18</span>
-    )
-  }
-}
-
+};
 
 const Movie = () => {
   const { id } = useParams();
@@ -55,8 +38,7 @@ const Movie = () => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        `Bearer ${API_TOKEN}`,
+      Authorization: `Bearer ${API_TOKEN}`,
     },
   };
 
@@ -85,19 +67,27 @@ const Movie = () => {
       .then((res) => res.json())
       .then((json) => {
         setData(json);
-      })
-      
+      });
   }, [id, URL]);
-
-  
 
   return (
     <section>
-      <main className="imagene">
+      <main>
         <MenuToolTip />
         <Breakcumbs movie={data?.title} />
-        <div className="text-white grid grid-cols-1 md:grid-cols-2 gap-5 xl:p-12 p-4 md:p-12 mt-12 md:mt-0 ">
-          <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2">
+        <div className="text-white grid md:grid-cols-2 gap-5 xl:p-12 p-4 md:p-2 mt-12 md:mt-0  ">
+          <div className="w-full grid place-content-center place-items-center ">
+            <img
+              src={
+                data?.poster_path === null || undefined
+                  ? NoImage
+                  : `https://image.tmdb.org/t/p/w500/${data?.poster_path}`
+              }
+              className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
+            />
+            {/* <Download link={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}></Download> */}
+          </div>
+          <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2 information">
             <div className="text-sm text-gray-300 flex flex-col gap-2">
               <code>{data?.tagline}</code>
             </div>
@@ -105,10 +95,10 @@ const Movie = () => {
               {data?.title}
             </h2>
             <p className="font-extralight text-sm">
-              <Horas minutos={data?.runtime}/>
+              <Horas minutos={data?.runtime} />
             </p>
             <div className="flex justify-between">
-            <div className="flex gap-2">
+              <div className="flex gap-2">
                 <Link
                   className="h-fit max-h-fit flex justify-center font-light text-sm btn btn-wide glass tooltip rounded-xl"
                   to={`/movie/servers/${data?.id}`}
@@ -121,7 +111,8 @@ const Movie = () => {
                   onClick={handleAddToFavorites}
                   data-tip="Añadir a Favoritos"
                 >
-                  <Icon icon="hugeicons:add-01" width="17" height="17" /> Favoritos
+                  <Icon icon="hugeicons:add-01" width="17" height="17" />{" "}
+                  Favoritos
                 </button>
               </div>
             </div>
@@ -134,15 +125,15 @@ const Movie = () => {
             </p>
             <h3 className="font-semibold text-wrap text-xl mb-2">Generos</h3>
             <ul className="mt flex gap-2 flex-wrap flex-row">
-                {data?.genres?.map((genre) => (
-                  <li
-                    className="p-2  btn btn-sm back w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
-                    key={genre.id}
-                  >
-                    {genre.name}
-                  </li>
-                ))}
-              </ul>
+              {data?.genres?.map((genre) => (
+                <li
+                  className="p-2  btn btn-sm back w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
+                  key={genre.id}
+                >
+                  {genre.name}
+                </li>
+              ))}
+            </ul>
             <div className="stats stats-vertical lg:stats-horizontal bg-transparent mt-4 ">
               <div className="stat">
                 <div className="stat-title">Lenguaje</div>
@@ -168,13 +159,6 @@ const Movie = () => {
                 <div className="stat-desc">↘︎ 90 (14%)</div>
               </div>
             </div>
-          </div>
-          <div className="w-full grid place-content-center place-items-center">
-            <img
-              src={data?.poster_path === null || undefined ? NoImage : `https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-              className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
-            />
-            <Download link={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}></Download>
           </div>
         </div>
       </main>

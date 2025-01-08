@@ -1,4 +1,4 @@
-export default function Download({link}) {
+export default function Download({link,className}) {
     const handleClickDownload = () => {
         const proxy = 'https://corsproxy.io/?';
         const url = proxy + link;  // Añadir el proxy al enlace
@@ -6,8 +6,6 @@ export default function Download({link}) {
         fetch(url)
             .then((respuesta) => respuesta.blob())
             .then(file => {
-                console.log(file);
-
                 let tempUrl = URL.createObjectURL(file)
                 let aTag  = document.createElement("a")
                 aTag.href = tempUrl
@@ -20,6 +18,6 @@ export default function Download({link}) {
     }
 
     return (
-        <button className="btn" onClick={handleClickDownload}>Descargar</button>
+        <button className={className} onClick={handleClickDownload}>Descargar Poster </button>
     );
 }

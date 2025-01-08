@@ -12,18 +12,18 @@ export default function MovieServer() {
       <h3 className="font-light text-5xl p-6 text-center text-wrap">Servidores disponibles</h3>
       <div className="inline-flex gap-3">
         <Link
-          className="flex flex-shrink flex-grow flex-row items-center glass btn btn-neutral gap-2"
+          className="flex flex-shrink flex-grow flex-row items-center glass btn btn-neutral gap-2 rounded-md"
           to={`https://vidlink.pro/movie/${id}`}
         >
           <Icon icon="solar:play-line-duotone" width="16" height="16" />
-          Embed Link
+          Vid Link
         </Link>
         <Link
-          className="inline-flex items-center glass btn btn-neutral gap-2"
+          className="inline-flex items-center glass btn btn-neutral gap-2 rounded-md"
           to={`https://embed.su/embed/movie/${id}`}
         >
           <Icon icon="solar:play-line-duotone" width="16" height="16" />
-          VidLink Link
+          Embed Link
         </Link>
       </div>
       <div>

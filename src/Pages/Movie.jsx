@@ -85,7 +85,7 @@ const Movie = () => {
               }
               className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
             />
-            {/* <Download link={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}></Download> */}
+            <Download link={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`} className={"btn rounded-md btn-sm py-1 glass"} ></Download> 
           </div>
           <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2 information">
             <div className="text-sm text-gray-300 flex flex-col gap-2">
@@ -97,21 +97,21 @@ const Movie = () => {
             <p className="font-extralight text-sm">
               <Horas minutos={data?.runtime} />
             </p>
-            <div className="flex justify-between">
+            <div className="flex flex-wrap justify-between">
               <div className="flex gap-2">
                 <Link
-                  className="h-fit max-h-fit flex justify-center font-light text-sm btn btn-wide glass tooltip rounded-xl"
+                  className="h-fit max-h-fit flex flex-shrink-3 justify-center font-light text-sm btn btn-wide glass tooltip rounded-xl"
                   to={`/movie/servers/${data?.id}`}
                   data-tip="Play"
                 >
                   <Icon icon="tabler:play" width="18" height="18" /> Play
                 </Link>
                 <button
-                  className="w-fit h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm glass  rounded-md tooltip"
+                  className="w-fit  h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm glass rounded-md tooltip"
                   onClick={handleAddToFavorites}
                   data-tip="Añadir a Favoritos"
                 >
-                  <Icon icon="hugeicons:add-01" width="17" height="17" />{" "}
+                  <Icon icon="solar:heart-outline" width="17" height="17" />{" "}
                   Favoritos
                 </button>
               </div>

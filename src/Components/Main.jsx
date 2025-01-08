@@ -1,4 +1,5 @@
 import GridMain from "./GridMain";
+import Marqueee from "../Components/Marquee"
 
 function Main() {
   return (
@@ -7,14 +8,14 @@ function Main() {
         <h1 className="text-5xl lg:text-7xl font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text">
           {'DelFilms >.<'}
         </h1>
-        <h2 className="text-xl lg:text-4xl l:7xl  bg-gradient-to-br from-white to-gray-950 bg-clip-text text-transparent">
+        <h2 className="text-xl lg:text-4xl xl:7xl bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent w-[28rem]">
           Descubre, disfruta y comparte películas.
         </h2>
         <p className="text-sm md:text-md lg:text-lg xl:text-1xl text-gray-500 font-extralight">
           Explora y disfruta tus películas favoritas.
         </p>
       </div>
-        {/* <GridMain></GridMain> */}
+        <Marqueee ></Marqueee>
     </div>
   );
 }

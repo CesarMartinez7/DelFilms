@@ -111,7 +111,7 @@ const Movie = () => {
             <div className="flex gap-2">
                 <Link
                   className="h-fit max-h-fit flex justify-center font-light text-sm btn btn-wide glass tooltip rounded-xl"
-                  to={`https://vidlink.pro/movie/${data?.id}`}
+                  to={`/movie/servers/${data?.id}`}
                   data-tip="Play"
                 >
                   <Icon icon="tabler:play" width="18" height="18" /> Play

@@ -24,6 +24,7 @@ const Movie = lazy(() => import("./Pages/Movie"));
 const MainPage = lazy(() => import("./Components/Main"));
 const Favorite = lazy(() => import("./Pages/Favorite"));
 const NotFound = lazy(() => import("./Pages/NotFound"));
+const MovieServer = lazy(() => import("./Components/MovieServer"))
 
 function App() {
   const [querySearch, setQuerySearch] = useState("");
@@ -51,6 +52,7 @@ function App() {
             <Route path="/main" element={<MainPage />} />
             <Route path="/search" element={<Data></Data>} />
             <Route path="/favorite" element={<Favorite arrayLocalStorage={arrayLocalStorage}></Favorite>} />
+            <Route path="/movie/servers/:id" element={<MovieServer></MovieServer>}></Route>
           </Routes>
           <div>
           <Footer />

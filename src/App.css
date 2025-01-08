@@ -3,9 +3,89 @@
 @tailwind utilities;
 
 
-:root{
+/* :root{
   background: radial-gradient(circle, rgba(0, 0, 0, 0.863) 34%, rgba(0,0,0,1) 100%); 
-} 
+}  */
+
+
+:root {
+  --bg-color-1: #050505;
+  --bg-color-2: #0a0a0a;
+  --bg-color-3: #101010;
+}
+
+/* Animación para el fondo */
+@keyframes subtleGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Aplicar al root o al body */
+:root, body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
+  background-size: 400% 400%;
+  animation: subtleGradient 20s ease infinite;
+}
+
+/* Efecto de partículas flotantes más sutiles */
+@keyframes subtleFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50px) rotate(180deg);
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle, rgba(0, 0, 0, 0) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.274) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  animation: subtleFloat 30s linear infinite;
+}
+
+/* Efecto de brillo sutil */
+@keyframes subtleGlow {
+  0%, 100% {
+    box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.02);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.01);
+  }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  animation: subtleGlow 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
 
 
 /* Asegúrate de que el contenedor principal tenga una altura mínima del 100% */

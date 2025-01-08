@@ -32,6 +32,7 @@
   background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
+  transition: all 700ms;
 }
 
 

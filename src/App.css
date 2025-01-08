@@ -9,13 +9,13 @@
 
 
 :root {
-  --bg-color-1: #050505;
-  --bg-color-2: #0a0a0a;
-  --bg-color-3: #101010;
+  --bg-color-1: #030303;
+  --bg-color-2: #050505;
+  --bg-color-3: #080808;
 }
 
 /* Animación para el fondo */
-@keyframes subtleGradient {
+@keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
   }
@@ -27,22 +27,29 @@
   }
 }
 
-/* Aplicar al root o al body */
-:root, body {
+/* Aplicar al root */
+:root {
+  background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+/* O aplicar al body */
+body {
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
   background-size: 400% 400%;
-  animation: subtleGradient 20s ease infinite;
+  animation: gradientAnimation 15s ease infinite;
 }
 
-/* Efecto de partículas flotantes más sutiles */
-@keyframes subtleFloat {
+/* Efecto de partículas flotantes */
+@keyframes floatingParticles {
   0% {
     transform: translateY(0) rotate(0deg);
   }
   100% {
-    transform: translateY(-50px) rotate(180deg);
+    transform: translateY(-100px) rotate(360deg);
   }
 }
 
@@ -55,52 +62,28 @@ body::before {
   height: 100%;
   pointer-events: none;
   background-image: 
-    radial-gradient(circle, rgba(0, 0, 0, 0) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.274) 1px, transparent 1px);
-  background-size: 60px 60px;
-  background-position: 0 0, 30px 30px;
-  animation: subtleFloat 30s linear infinite;
-}
-
-/* Efecto de brillo sutil */
-@keyframes subtleGlow {
-  0%, 100% {
-    box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.02);
-  }
-  50% {
-    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.01);
-  }
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: transparent;
-  animation: subtleGlow 10s ease-in-out infinite;
-  pointer-events: none;
+    radial-gradient(circle, rgba(255, 255, 255, 0.096) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  animation: floatingParticles 20s linear infinite;
 }
 
 
 
-/* Asegúrate de que el contenedor principal tenga una altura mínima del 100% */
+
 html, body, #root {
   margin: 0;
   display: flex;
   flex-direction: column;
 }
 
-/* Asegúrate de que el footer esté siempre en la parte inferior */
+
 footer {
   margin-top: auto;
 }
 
-/* Ajusta el z-index para asegurarte de que el dropdown se muestre encima */
+
 .dropdown-content {
   z-index: 50;
 }

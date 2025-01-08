@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 
 function Breakcumbs({ movie = "Movie" }) {
   return (
-    <div className="breadcrumbs text-sm mx-7 mt-3">
+    <div className="breadcrumbs text-sm mx-7 mt-3 sticky top-20">
       <ul>
         <li>
           <a href="/" className="inline-grid items-center gap-2">

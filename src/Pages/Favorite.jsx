@@ -50,7 +50,7 @@ export default function Favorite({ arrayLocalStorage }) {
     return (
       <div className="flex justify-center flex-col items-center h-screen">
         <h3 className="font-bold text-[6rem]">{"T_T"}</h3>
-        <h2 className="text-2xl">Sorry, dont have favorite</h2>
+        <h2 className="text-2xl">Sorry, you don't have favorite movies.</h2>
       </div>
     );
   } else if (loaded) {

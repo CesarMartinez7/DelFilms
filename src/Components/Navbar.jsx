@@ -90,7 +90,7 @@ function Navbar() {
             role="button"
             className="m-1 btn btn-ghost btn-circle"
           >
-           <Icon icon="tabler:search" width="24" height="24" /> 
+           <Icon icon="tabler:search" width="22" height="22" /> 
           </div>
           <ul
             tabIndex={0}

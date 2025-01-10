@@ -7,6 +7,8 @@ import MenuToolTip from "../Components/MenuTooltip";
 import Stat from "../Components/Stat";
 import NoImage from "../assets/noImage.webp";
 import Download from "../Components/Dowload";
+import Stats from "../Components/Stat";
+import MovieHook from "../Hooks/MovieHook";
 
 // const backGround = (data) => {
 //   const imageneBack = document.querySelector(".imagene");
@@ -30,46 +32,7 @@ const Horas = ({ minutos }) => {
 };
 
 const Movie = () => {
-  const { id } = useParams();
-  const URL = `https://api.themoviedb.org/3/movie/${id}`;
-  const [data, setData] = useState(null);
-  const [movieFavorite, setMovieFavorite] = useState([]);
-  const opciones = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${API_TOKEN}`,
-    },
-  };
-
-  const handleAddToFavorites = () => {
-    if (data?.id) {
-      const movieArrayFav =
-        JSON.parse(localStorage.getItem("movieFavorite")) || [];
-
-      if (!movieArrayFav.includes(data.id)) {
-        const updatedFavorites = [...movieArrayFav, data.id];
-
-        setMovieFavorite(updatedFavorites);
-
-        // Guardar en mi localStorage 🐒🐒🐒🐒
-        localStorage.setItem("movieFavorite", JSON.stringify(updatedFavorites));
-        // Cambiar proximamente a alertas o mensajes
-        alert("Película añadida a favoritos.");
-      } else {
-        alert("Esta película ya está en favoritos.");
-      }
-    }
-  };
-
-  useEffect(() => {
-    fetch(URL, opciones)
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json);
-      });
-  }, [id, URL]);
-
+  const [id, URL, data, setData, opciones,handleAddToFavorites] = MovieHook();
   return (
     <section>
       <main>
@@ -85,7 +48,10 @@ const Movie = () => {
               }
               className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
             />
-            <Download link={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`} className={"btn rounded-md btn-sm py-1 glass"} ></Download> 
+            <Download
+              link={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+              className={"btn rounded-md btn-sm py-1 glass"}
+            ></Download>
           </div>
           <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2 information">
             <div className="text-sm text-gray-300 flex flex-col gap-2">
@@ -134,31 +100,7 @@ const Movie = () => {
                 </li>
               ))}
             </ul>
-            <div className="stats stats-vertical lg:stats-horizontal bg-transparent mt-4 ">
-              <div className="stat">
-                <div className="stat-title">Lenguaje</div>
-                <div className="stat-value">
-                  {data?.original_language.toUpperCase()}
-                </div>
-                <div className="stat-desc">
-                  País de Origen : {data?.origin_country}
-                </div>
-              </div>
-
-              <div className="stat">
-                <div className="stat-title">Lanzamiento</div>
-                <div className="stat-value">{data?.release_date}</div>
-                <div className="stat-desc">
-                  Popularidad ↗︎: {data?.popularity}
-                </div>
-              </div>
-
-              <div className="stat">
-                <div className="stat-title">Critica</div>
-                <div className="stat-value">{data?.vote_average}</div>
-                <div className="stat-desc">↘︎ 90 (14%)</div>
-              </div>
-            </div>
+            <Stats data={data}></Stats>
           </div>
         </div>
       </main>

@@ -1,14 +1,19 @@
 import { useState, useEffect, Suspense, lazy, createContext } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { PacmanLoader } from "react-spinners";
 import Data from "./Components/Data";
+import Rutas from "./Routers/Lazy";
+const {Home,Movie,MainPage,Favorite,NotFound,MovieServer} = Rutas
+
+export const AppThemeContext = createContext(null);
 
 
+
+
+// Componentes De App
 const Loading = () => {
   return (
     <div className="fixed inset-0 flex justify-center items-center">
@@ -17,14 +22,30 @@ const Loading = () => {
   );
 };
 
-export const AppThemeContext = createContext(null);
 
-const Home = lazy(() => import("./Pages/Home"));
-const Movie = lazy(() => import("./Pages/Movie"));
-const MainPage = lazy(() => import("./Components/Main"));
-const Favorite = lazy(() => import("./Pages/Favorite"));
-const NotFound = lazy(() => import("./Pages/NotFound"));
-const MovieServer = lazy(() => import("./Components/MovieServer"))
+
+function Routers () {
+  return(
+    <AppThemeContext.Provider value={{ isDark, setIsDark, querySearch, setQuerySearch }}>
+      <Suspense fallback={<Loading />}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/movie/:id" element={<Movie />} />
+            <Route path="*" element={<NotFound/>} />
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/search" element={<Data/>} />
+            <Route path="/favorite" element={<Favorite arrayLocalStorage={arrayLocalStorage}></Favorite>} />
+            <Route path="/movie/servers/:id" element={<MovieServer/>}></Route>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </Suspense>
+    </AppThemeContext.Provider>
+  )
+}
+
 
 function App() {
   const [querySearch, setQuerySearch] = useState("");
@@ -46,18 +67,15 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home/>} />
             <Route path="/movie/:id" element={<Movie />} />
             <Route path="*" element={<NotFound/>} />
             <Route path="/main" element={<MainPage />} />
-            <Route path="/search" element={<Data></Data>} />
+            <Route path="/search" element={<Data/>} />
             <Route path="/favorite" element={<Favorite arrayLocalStorage={arrayLocalStorage}></Favorite>} />
-            <Route path="/movie/servers/:id" element={<MovieServer></MovieServer>}></Route>
+            <Route path="/movie/servers/:id" element={<MovieServer/>}></Route>
           </Routes>
-          <div>
           <Footer />
-
-          </div>
         </BrowserRouter>
       </Suspense>
     </AppThemeContext.Provider>

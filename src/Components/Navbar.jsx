@@ -3,6 +3,7 @@ import { useState,useContext, useEffect,useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppThemeContext } from "../App";
 import NavbarQueryFetch from "./NavbarQueryFetch";
+import ButtonChangeTheme from "./ButtonTheme";
 
 const html = document.querySelector("html");
 
@@ -11,7 +12,7 @@ const API_TOKEN = import.meta.env.VITE_API_TOKEN
 function Navbar() {
   const inputRef = useRef(null);
   const navigate = useNavigate();
-  const { isDark, setIsDark, querySearch, setQuerySearch } =
+  const {querySearch, setQuerySearch } =
     useContext(AppThemeContext);
   const [data, setData] = useState([]);
   const [movie, setMovie] = useState("");
@@ -121,19 +122,7 @@ function Navbar() {
           </ul>
         </button>
 
-        <button
-          className="btn btn-ghost btn-circle hover:animation- duration-500"
-          onClick={() => {
-            setIsDark(!isDark);
-            html.setAttribute("data-theme", isDark ? "black" : "dark");
-          }}
-        >
-          {isDark ? (
-            <Icon icon="solar:sun-2-linear" width="22" height="22" />
-          ) : (
-            <Icon icon="solar:moon-linear" width="22" height="22" />
-          )}
-        </button>
+        <ButtonChangeTheme></ButtonChangeTheme>
         <a className="btn btn-ghost btn-circle" href="/favorite">
           <div className="indicator">
           <Icon icon="iconoir:bookmark" width="22" height="22" />

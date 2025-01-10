@@ -19,7 +19,7 @@ export default function HoverCard({data}) {
     />
     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
       <div className="p-4 text-white">
-      <h3 className="text-sm md:text-md font-bold mb-2">{data?.title}</h3>
+      <h3 className="text-sm md:text-md font-semibold mb-2">{data?.title}</h3>
       <p className="text-sm flex justify-between"><span>{data?.release_date}</span></p>
       </div>
     </div>

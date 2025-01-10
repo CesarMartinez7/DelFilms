@@ -69,9 +69,6 @@ function Navbar() {
               <a href="/">Inicio</a>
             </li>
             <li>
-              <a>Portfolio</a>
-            </li>
-            <li>
               <a>Acerca de</a>
             </li>
           </ul>
@@ -79,7 +76,7 @@ function Navbar() {
       </div>
       <div className="navbar-center">
         <a
-          className="hidden md:flex font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text"
+          className=" md:flex font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text"
           href="/"
         >
           {"DelFilms >.<"}

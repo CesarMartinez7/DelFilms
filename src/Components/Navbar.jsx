@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { useState,useContext, useEffect,useRef } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppThemeContext } from "../App";
 import NavbarQueryFetch from "./NavbarQueryFetch";
@@ -7,13 +7,12 @@ import ButtonChangeTheme from "./ButtonTheme";
 
 const html = document.querySelector("html");
 
-const API_TOKEN = import.meta.env.VITE_API_TOKEN
+const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 function Navbar() {
   const inputRef = useRef(null);
   const navigate = useNavigate();
-  const {querySearch, setQuerySearch } =
-    useContext(AppThemeContext);
+  const { querySearch, setQuerySearch } = useContext(AppThemeContext);
   const [data, setData] = useState([]);
   const [movie, setMovie] = useState("");
 
@@ -21,10 +20,9 @@ function Navbar() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        `Bearer ${API_TOKEN}`,
+      Authorization: `Bearer ${API_TOKEN}`,
     },
-    mode: "cors"
+    mode: "cors",
   };
 
   const URL = `https://api.themoviedb.org/3/search/movie?query=${movie}`;
@@ -65,7 +63,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow back rounded-md" 
+            className="menu dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow back rounded-md"
           >
             <li>
               <a href="/">Inicio</a>
@@ -80,18 +78,25 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="hidden md:flex font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text" href="/">
+        <a
+          className="hidden md:flex font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text"
+          href="/"
+        >
           {"DelFilms >.<"}
         </a>
       </div>
-      <div className="navbar-end alto" >
-        <button className="dropdown dropdown-bottom dropdown-end alto" title="Buscar tu película favorita" onClick={() => inputRef.current.focus()}>
+      <div className="navbar-end alto">
+        <button
+          className="dropdown dropdown-bottom dropdown-end alto"
+          title="Buscar tu película favorita"
+          onClick={() => inputRef.current.focus()}
+        >
           <div
             tabIndex={0}
             role="button"
             className="m-1 btn btn-ghost btn-circle"
           >
-           <Icon icon="tabler:search" width="22" height="22" /> 
+            <Icon icon="tabler:search" width="22" height="22" />
           </div>
           <ul
             tabIndex={0}
@@ -100,7 +105,7 @@ function Navbar() {
             <li>
               <form onSubmit={handleSubmit} className="alto">
                 <input
-                ref={inputRef}
+                  ref={inputRef}
                   autoComplete="true"
                   element="input"
                   name="movienav"
@@ -115,7 +120,7 @@ function Navbar() {
                 />
               </form>
             </li>
-            
+
             {data.map((movie, index) => (
               <NavbarQueryFetch movie={movie} index={index} key={index} />
             ))}
@@ -125,7 +130,7 @@ function Navbar() {
         <ButtonChangeTheme></ButtonChangeTheme>
         <a className="btn btn-ghost btn-circle" href="/favorite">
           <div className="indicator">
-          <Icon icon="iconoir:bookmark" width="22" height="22" />
+            <Icon icon="iconoir:bookmark" width="22" height="22" />
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-gray-500"></span>

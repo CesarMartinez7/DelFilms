@@ -25,7 +25,7 @@ export default function Favorite({ arrayLocalStorage }) {
       <div className="flex justify-center flex-col items-center h-screen">
         <h3 className="font-bold text-[6rem]">{"T_T"}</h3>
         <h2 className="text-2xl">
-          Sorry, no tienes películas añadidas a favoritos .
+          Lo sentimos, no tienes películas añadidas a favoritos .
         </h2>
       </div>
     );
@@ -39,10 +39,19 @@ export default function Favorite({ arrayLocalStorage }) {
               : "p-4 h-screen"
           }
         >
-          <h3 className="font-semibold text-2xl my-7">Tus Favoritos</h3>
+          <div className="flex justify-between items-center">
+            <h3 className="font-semibold text-2xl my-7">Tus Favoritos</h3>
+            <div>
+              <button className="btn btn-ghost back" onClick={()=>{
+                localStorage.setItem("movieFavorite", "[]")
+                console.log(localStorage.getItem("movieFavorite"))
+                location.reload()
+              }}>Limpiar todo</button>
+            </div>
+          </div>
           <ul className="p-4 grid grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 2xl:grid-cols-9 md:gap-3 gap-1">
             {fetching.map((movie) => (
-              <div key={movie?.id} className="p-2">
+              <li key={movie?.id} className="p-2">
                 <img
                   src={
                     movie.poster_path === null
@@ -66,7 +75,7 @@ export default function Favorite({ arrayLocalStorage }) {
                     Remover
                   </button>
                 </div>
-              </div>
+              </li>
             ))}
           </ul>
         </div>

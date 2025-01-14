@@ -6,6 +6,8 @@ const MainPage = lazy(() => import("../Components/Main"));
 const Favorite = lazy(() => import("../Pages/Favorite"));
 const NotFound = lazy(() => import("../Pages/NotFound"));
 const MovieServer = lazy(() => import("../Components/MovieServer"))
+const Series = lazy(() => import("../Pages/Series"))
+const SeriesSearch = lazy(() => import("../Pages/SeriesSearch"))
 
 
 const Rutas = {
@@ -14,7 +16,9 @@ const Rutas = {
     MainPage:MainPage,
     Favorite:Favorite,
     NotFound:NotFound,
-    MovieServer:MovieServer
+    MovieServer:MovieServer,
+    Series:Series,
+    SeriesSearch:SeriesSearch
 }
 
 

@@ -63,7 +63,7 @@ export default function Favorite({ arrayLocalStorage }) {
                       handleClickDelete(fetching, movie);
                     }}
                   >
-                    Delete
+                    Remover
                   </button>
                 </div>
               </div>

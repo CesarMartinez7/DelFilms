@@ -7,7 +7,8 @@ export default function ButtonChangeTheme() {
 
   const handleClick = () => {
     setIsDark(!isDark);
-    html.setAttribute("data-theme", isDark ? "black" : "dark");
+    // html.setAttribute("data-theme", isDark ? "black" : "dark");
+    window.alert("El boton de cambio de tema funcionaba correctamente pero se esta mejorando para que concuerde con el fondo animado")
   };
 
   return (

@@ -10,13 +10,6 @@ import Download from "../Components/Dowload";
 import Stats from "../Components/Stat";
 import MovieHook from "../Hooks/MovieHook";
 
-// const backGround = (data) => {
-//   const imageneBack = document.querySelector(".imagene");
-//   if (imageneBack) {
-//     imageneBack.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.911) 44%, rgba(0,0,0,1) 90%),url('https://image.tmdb.org/t/p/w500${data?.backdrop_path}')`;
-//   }
-// };
-
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 const Horas = ({ minutos }) => {

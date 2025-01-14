@@ -5,7 +5,7 @@ import { AppThemeContext } from "../App";
 import NavbarQueryFetch from "./NavbarQueryFetch";
 import ButtonChangeTheme from "./ButtonTheme";
 
-const html = document.querySelector("html");
+
 
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
@@ -127,7 +127,7 @@ function Navbar() {
         <ButtonChangeTheme></ButtonChangeTheme>
         <a className="btn btn-ghost btn-circle" href="/favorite">
           <div className="indicator">
-            <Icon icon="iconoir:bookmark" width="22" height="22" />
+            <Icon icon="iconoir:bookmark" width="20" height="20" />
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-gray-500"></span>

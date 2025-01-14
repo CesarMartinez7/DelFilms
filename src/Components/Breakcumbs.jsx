@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import Alert from "./Alert";
 
 function Breakcumbs({ movie = "Movie" }) {
   return (
@@ -19,7 +20,7 @@ function Breakcumbs({ movie = "Movie" }) {
         </li>
         <li>
           <span className="inline-flex items-center gap-2">
-          <Icon icon="solar:play-line-duotone" width="16" height="16" />
+          <Icon icon="solar:play-line-duotone" width="14" height="14" />
             {movie}
           </span>
         </li>

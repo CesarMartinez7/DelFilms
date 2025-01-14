@@ -7,6 +7,7 @@ import Rutas from "./Routers/Lazy"; // Rutas que es un Objeto que tiene todas la
 const { Home, Movie, MainPage, Favorite, NotFound, MovieServer,Series, SeriesSearch } = Rutas; // Desestructuracion de las RUTAS
 import LoadingPacman from "./Components/LoadingPacman"; // Componente de Carga
 import "./App.css";
+import SeriesServers from "./Components/SeriesServers";
 
 export const AppThemeContext = createContext(null); // Contexto de la app
 function App() {
@@ -52,6 +53,7 @@ function App() {
                 <Favorite arrayLocalStorage={arrayLocalStorage}></Favorite>
               }
             />
+            <Route path="/series/servers/:id" element={<SeriesServers></SeriesServers>}></Route>
             <Route path="/movie/servers/:id" element={<MovieServer />}></Route>
             <Route path="/series/:id" element={<SeriesSearch></SeriesSearch>}></Route>
           </Routes>

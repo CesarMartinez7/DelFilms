@@ -24,7 +24,7 @@ export default Main;
 
 export function Main2() {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 p-2 md:p-4">
       <div className="back p-6 rounded-lg ">
         <div>
           <h2 className="text-2xl font-medium mb-3">Créditos y Origen de Datos</h2>

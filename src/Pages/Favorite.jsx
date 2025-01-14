@@ -40,9 +40,9 @@ export default function Favorite({ arrayLocalStorage }) {
           }
         >
           <h3 className="font-semibold text-2xl my-7">Tus Favoritos</h3>
-          <ul className="p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 2xl:grid-cols-9 md:gap-3 gap-1">
+          <ul className="p-4 grid grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 2xl:grid-cols-9 md:gap-3 gap-1">
             {fetching.map((movie) => (
-              <div key={movie?.id} className=" p-2 ">
+              <div key={movie?.id} className="p-2">
                 <img
                   src={
                     movie.poster_path === null

@@ -19,6 +19,11 @@ function App() {
     const savedTheme = localStorage.getItem("isDark");
     return savedTheme ? JSON.parse(savedTheme) : true;
   });
+
+  useEffect(() => {
+    localStorage.setItem("isFirsSession", "true")
+  },[])
+
   useEffect(() => {
     localStorage.setItem("isDark", JSON.stringify(isDark));
     document.documentElement.setAttribute(

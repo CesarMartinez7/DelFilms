@@ -32,7 +32,7 @@ const Horas = ({ minutos }) => {
 };
 
 const Movie = () => {
-  const [id, URL, data, setData, opciones,handleAddToFavorites] = MovieHook();
+  const [id, URL, data, setData, opciones,handleAddToFavorites] = MovieHook(); 
   return (
     <section>
       <main>

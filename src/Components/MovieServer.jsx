@@ -8,7 +8,7 @@ export default function MovieServer() {
   const { id } = useParams();
   return (
     <div className="grid h-screen place-items-center content-center">
-    <section className="flex flex-col flex-shrink justify-center items-center min-w-fit p-5 gap-4 shadow-2xl bg-zinc-950 rounded-2xl">
+    <section className="flex flex-col flex-shrink justify-center back items-center min-w-fit p-5 gap-4 shadow-2xl bg-zinc-950 rounded-2xl">
       <h3 className="font-light text-5xl p-6 text-center text-wrap">Servidores disponibles</h3>
       <div className="inline-flex gap-3">
         <Link

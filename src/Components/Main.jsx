@@ -24,17 +24,41 @@ export default Main;
 
 export function Main2() {
   return (
-    <div className="flex justify-center">
-    <div className="collapse collapse-plus back  p-9 rounded-lg w-[40rem] ">
-      <input type="radio" name="my-accordion-3" defaultChecked />
-      <div className="collapse-title text-xl font-medium">
-        Créditos y Origen de Datos
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+      <div className="collapse collapse-plus back  p-9 rounded-lg  ">
+        <input type="radio" name="my-accordion-3" defaultChecked />
+        <div className="collapse-title text-2xl font-medium">
+          Créditos y Origen de Datos
+        </div>
+        <p className="font-light">
+            Esta página utiliza la API de The Movie Database (TMDb) para obtener
+            información y datos relacionados con películas, series y actores.
+            Todas las consultas realizadas, como búsquedas de títulos, detalles
+            de contenido, y visualización de imágenes o descripciones, son
+            gestionadas a través de dicha API.
+          </p>
+        
       </div>
-      <div className="collapse-content">
-        <p className="font-light">Esta página utiliza la API de The Movie Database (TMDb) para obtener información y datos relacionados con películas, series y actores. Todas las consultas realizadas, como búsquedas de títulos, detalles de contenido, y visualización de imágenes o descripciones, son gestionadas a través de dicha API.</p>
+      <div className="collapse collapse-plus back  p-9 rounded-lg">
+        <input type="radio" name="my-accordion-3" defaultChecked />
+        <div className="collapse-title text-2xl font-medium">
+        Interfaz Amigable y Funciones Personalizadas
+        </div>
+        <div className="collapse-content text-lg">
+        <p className="font-light">
+        Nuestra plataforma es fácil de usar, con recomendaciones personalizadas basadas en tus gustos y la opción de crear listas de reproducción para que accedas a tus películas favoritas rápidamente.
+          </p>
+        </div>
       </div>
-    </div>
-
+      <div className="collapse collapse-plus back  p-9 rounded-lg  ">
+        <input type="radio" name="my-accordion-3" defaultChecked />
+        <div className="collapse-title text-2xl font-medium">
+        Calidad de Visualización Superior
+        </div>
+        <div className="collapse-content text-lg font-light">
+        Garantizamos una experiencia visual y de sonido de alta calidad, con opciones de streaming en resolución HD para que disfrutes de cada detalle de tus películas favoritas.
+        </div>
+      </div>
     </div>
   );
 }

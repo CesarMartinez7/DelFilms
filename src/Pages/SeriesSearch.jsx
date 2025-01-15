@@ -106,46 +106,56 @@ export default function SeriesSearch() {
           <h1>
             Temporada {seasons} Episodio {episodio}
           </h1>
-          <details class="dropdown">
-            <summary class="btn m-1 back">Temporadas</summary>
-            <ul class="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
-              {show?.seasons.map((season) => (
-                <li
-                  className="text-left"
+          <div className="flex justify-between">
+            <div>
+              <details class="dropdown">
+                <summary class="btn m-1 back">Temporadas</summary>
+                <ul class="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
+                  {show?.seasons.map((season) => (
+                    <li
+                      className="text-left"
+                      onClick={() => {
+                        setSeasons(season?.season_number);
+                      }}
+                    >
+                      <button>Temporada {season.season_number}</button>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </div>
+            <div className="grid place-items-center">
+              <div className="flex justify-between gap-4 mb-5">
+                <button
+                  className="btn rounded-lg glass"
                   onClick={() => {
-                    setSeasons(season.season_number);
+                    handleClickBack(seasons);
                   }}
                 >
-                  <button>Temporada {season.season_number}</button>
-                </li>
-              ))}
-            </ul>
-          </details>
-        </div>
-        <iframe
-          src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
-          frameborder="0"
-          allowfullscreen
-          width={"70%"}
-          className="h-screen bg-transparent"
-        ></iframe>
-        <div className="flex justify-between mt-5">
-          <button
-            className="btn rounded-lg glass"
-            onClick={() => {
-              handleClickBack(seasons)
-            }}
-          >
-            Anterior
-          </button>
-          <button
-            className="btn rounded-lg glass"
-            onClick={() => {
-              handleClickNext(seasons)
-            }}
-          >
-            Siguiente
-          </button>
+                  Anterior
+                </button>
+                <button
+                  className="btn rounded-lg glass"
+                  onClick={() => {
+                    handleClickNext(seasons);
+                  }}
+                >
+                  Siguiente
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+          <iframe
+            src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
+            frameborder="0"
+            allowfullscreen
+            width={"70%"}
+            className="h-screen bg-transparent"
+          ></iframe>
+
+          </div>
+
         </div>
       </div>
     </div>

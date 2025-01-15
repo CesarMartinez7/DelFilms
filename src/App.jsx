@@ -4,7 +4,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Data from "./Components/Data"; // Componente de la Ruta Search
 import Rutas from "./Routers/Lazy"; // Rutas que es un Objeto que tiene todas la rutas en Lazy para mejorar el rendimiento de la WEB
-const { Home, Movie, MainPage, Favorite, NotFound, MovieServer,Series, SeriesSearch } = Rutas; // Desestructuracion de las RUTAS
+const { Home, Movie, MainPage, Favorite, NotFound, MovieServer,Series, SeriesSearch, About} = Rutas; // Desestructuracion de las RUTAS
 import LoadingPacman from "./Components/LoadingPacman"; // Componente de Carga
 import "./App.css";
 import SeriesServers from "./Components/SeriesServers";
@@ -53,6 +53,7 @@ function App() {
             <Route path="/series/servers/:id" element={<SeriesServers></SeriesServers>}></Route>
             <Route path="/movie/servers/:id" element={<MovieServer />}></Route>
             <Route path="/series/:id" element={<SeriesSearch></SeriesSearch>}></Route>
+            <Route path="/about" element={<About></About>}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>

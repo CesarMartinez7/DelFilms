@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { useState, useContext, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppThemeContext } from "../App";
 import NavbarQueryFetch from "./NavbarQueryFetch";
 import ButtonChangeTheme from "./ButtonTheme";
@@ -72,7 +72,7 @@ function Navbar() {
               <a href="/series">Series</a>
             </li>
             <li>
-              <a>Acerca de</a>
+              <Link to={"/about"}>Acerca de</Link>
             </li>
           </ul>
         </div>

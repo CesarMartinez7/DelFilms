@@ -65,7 +65,7 @@ export default function Favorite({ arrayLocalStorage }) {
                   }}
                 />
                 <div className="flex justify-between items-center mt-3">
-                  <h4 className="font-semibold">{movie?.title}</h4>
+                  <h4 className="font-semibold text-sm">{movie?.title}</h4>
                   <button
                     className="btn btn-sm rounded-lg glass"
                     onClick={() => {

@@ -160,7 +160,7 @@ export default function SeriesSearch() {
           </div>
           <div className="flex justify-center bg-transparent">
             <iframe
-              src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
+              src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=000000&secondaryColor=c0c0c0&iconColor=b4b4b4&icons=default&player=jw&title=true&poster=true&autoplay=true&nextbutton=true`}
               frameborder="0"
               allowfullscreen
               className="bg-transparent w-full h-dvh"

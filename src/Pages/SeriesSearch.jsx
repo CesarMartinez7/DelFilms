@@ -45,27 +45,27 @@ export default function SeriesSearch() {
           </h2>
           <p>{show?.runtime}</p>
           <div className="flex flex-wrap gap-2">
-          <button
-            className="btn glass btn-wide rounded-lg"
-            onClick={() => {
-              navigate(`/series/servers/${show.id}`);
-            }}
-          >
-            <Icon icon="tabler:play" width="18" height="18" /> Play
-          </button>
-          <button
-            className="w-fit  h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm glass rounded-md tooltip"
-            data-tip="Añadir a Favoritos"
-            onClick={() => {
-              let array = JSON.parse(localStorage.getItem("movieFavorite"))
-              array.push(show?.id)
-              array = JSON.stringify(array)
-              localStorage.setItem("movieFavorite",array)
-            }}
-          >
-            <Icon icon="solar:heart-outline" width="17" height="17" /> Favoritos
-          </button>
-
+            <button
+              className="btn glass btn-wide rounded-lg"
+              onClick={() => {
+                navigate(`/series/servers/${show.id}`);
+              }}
+            >
+              <Icon icon="tabler:play" width="18" height="18" /> Play
+            </button>
+            <button
+              className="w-fit  h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm glass rounded-md tooltip"
+              data-tip="Añadir a Favoritos"
+              onClick={() => {
+                let array = JSON.parse(localStorage.getItem("movieFavorite"));
+                array.push(show?.id);
+                array = JSON.stringify(array);
+                localStorage.setItem("movieFavorite", array);
+              }}
+            >
+              <Icon icon="solar:heart-outline" width="17" height="17" />{" "}
+              Favoritos
+            </button>
           </div>
           <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
             Synopsis
@@ -75,17 +75,16 @@ export default function SeriesSearch() {
           </p>
           <h3 className="font-semibold text-wrap text-xl mb-2">Generos</h3>
           <div>
-          <ul className="mt flex gap-2 flex-wrap flex-row">
-            {show?.genres?.map((genre) => (
-              <li
-                className="p-2  btn btn-sm back w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
-                key={genre.id}
-              >
-                {genre.name}
-              </li>
-            ))}
-          </ul>
-
+            <ul className="mt flex gap-2 flex-wrap flex-row">
+              {show?.genres?.map((genre) => (
+                <li
+                  className="p-2  btn btn-sm back w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
+                  key={genre.id}
+                >
+                  {genre.name}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="stats stats-vertical md:stats-horizontal bg-transparent">
             <div className="stat">
@@ -134,6 +133,17 @@ export default function SeriesSearch() {
                       <button>Temporada {season.season_number}</button>
                     </li>
                   ))}
+                </ul>
+              </details>
+              <details className="dropdown">
+                <summary className="btn m-1 back">Episodios</summary>
+                <ul className="menu dropdown-content back rounded-box z-[1] w-52 p-2 shadow">
+                  {show?.seasons[seasons]?.episode_count &&
+                    Array.from({
+                      length: show.seasons[seasons].episode_count,
+                    }).map((_, i) => <li key={i} onClick={() => {
+                      setepisodio(i + 1)
+                    }}><button>Episodio {i + 1}</button></li>)}
                 </ul>
               </details>
             </div>

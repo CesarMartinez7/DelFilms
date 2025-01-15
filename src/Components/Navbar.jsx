@@ -69,6 +69,9 @@ function Navbar() {
               <a href="/">Inicio</a>
             </li>
             <li>
+              <a href="/series">Series</a>
+            </li>
+            <li>
               <a>Acerca de</a>
             </li>
           </ul>

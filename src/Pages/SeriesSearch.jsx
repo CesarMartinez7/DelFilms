@@ -5,7 +5,7 @@ import Download from "../Components/Dowload";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function SeriesSearch() {
-  const [incrementCap, setIncrementCap] = useState(1);
+  const [episodio, setepisodio] = useState(1);
   const [seasons, setSeasons] = useState(1);
   const navigate = useNavigate();
   const [show, setShow] = useState(null);
@@ -100,8 +100,9 @@ export default function SeriesSearch() {
       </section>
       <div>
         <div>
+          <h1>Temporada {seasons} Episodio {episodio}</h1>
           <details class="dropdown">
-            <summary class="btn m-1 back">Seasons</summary>
+            <summary class="btn m-1 back">Temporadas</summary>
             <ul class="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
               {show?.seasons.map((season) => (
                 <li className="text-left"
@@ -117,7 +118,7 @@ export default function SeriesSearch() {
           
         </div>
         <iframe
-          src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${incrementCap}`}
+          src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
           frameborder="0"
           allowfullscreen
           width={"70%"}
@@ -127,7 +128,7 @@ export default function SeriesSearch() {
           <button
             className="btn rounded-lg glass"
             onClick={() => {
-              setIncrementCap((a) => a - 1);
+              setepisodio((a) => a - 1);
             }}
           >
             Anterior
@@ -135,7 +136,7 @@ export default function SeriesSearch() {
           <button
             className="btn rounded-lg glass"
             onClick={() => {
-              setIncrementCap((a) => a + 1);
+              setepisodio((a) => a + 1);
             }}
           >
             Siguiente

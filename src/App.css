@@ -121,7 +121,14 @@ footer {
   background: rgba(12, 12, 12, 0.85);
   z-index: 999;
   border: 1px solid rgba(255, 255, 255, 0.125);
+  transition: all ease 700ms
 }
+
+.back:hover{
+  background: rgba(12, 12, 12, 0.95);
+  transition: all ease 700ms
+}
+
 .toCenteer {
   position: fixed;
   top: 50%;

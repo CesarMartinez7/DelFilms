@@ -56,14 +56,14 @@ export default function Series() {
   const [show, setshow] = useState([]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    localStorage.setItem("serie_query", e.target[0].value);
-    setQuery(localStorage.getItem("serie_query"));
-    console.log(
-      `Este es el query y viene de localStorage${localStorage.getItem(
-        "serie_query"
-      )}`
-    );
+    if(e.target[0].value.length > 0){
+      e.preventDefault();
+      localStorage.setItem("serie_query", e.target[0].value);
+      setQuery(localStorage.getItem("serie_query"));
+    }else{
+      alert("Por favor inserta texto en en el campo. ;)")
+      console.log("aaaaa")
+    }
   };
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function Series() {
           />
         </form>
         </header>
-        <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-4  p-4">
+        <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-3 p-4 ">
           {show &&
             show.map((show) => <HoverCardSeries show={show} key={show.id}></HoverCardSeries>)}
         </ul>

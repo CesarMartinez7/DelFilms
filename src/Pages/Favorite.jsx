@@ -24,7 +24,7 @@ export default function Favorite({ arrayLocalStorage }) {
     return (
       <div className="flex justify-center flex-col items-center h-screen">
         <h3 className="font-bold text-[6rem]">{"T_T"}</h3>
-        <h2 className="text-2xl">
+        <h2 className="text-2xl text-center">
           Lo sentimos, no tienes películas añadidas a favoritos .
         </h2>
       </div>

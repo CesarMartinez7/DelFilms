@@ -5,6 +5,12 @@
 
 
 
+@font-face{
+  font-family: "Monserat";
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight:300;
+}
+
 
 :root {
   --bg-color-1: #030303;
@@ -53,6 +59,10 @@
   transition: all 700ms;
 }
 
+
+*{
+  font-family: "Monserat";
+}
 
 body {
   margin: 0;

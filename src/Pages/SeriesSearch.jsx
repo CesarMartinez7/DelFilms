@@ -3,21 +3,24 @@ import { useParams, useNavigate } from "react-router-dom";
 import noImage from "../assets/noImage.webp";
 import Download from "../Components/Dowload";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import SerieHook from "../Hooks/SeriesHook";
 
 export default function SeriesSearch() {
-  const [episodio, setepisodio] = useState(1);
-  const [seasons, setSeasons] = useState(1);
-  const navigate = useNavigate();
-  const [show, setShow] = useState(null);
-  const { id } = useParams();
-  const URL = `https://api.themoviedb.org/3/tv/${id}?api_key=46bc83931796202fd8d9924bf15987dd`;
-
-  useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((data) => setShow(data));
-    console.log(show);
-  }, [URL]);
+  const [episodio, setepisodio, seasons, setSeasons, show, setShow] =
+    SerieHook();
+  const handleClickNext = (seasons) => {
+    setepisodio((a) => {
+      if (a < show?.seasons[seasons].episode_count) {
+        return a + 1;
+      } else {
+        window.alert("Ya no hay mas episodios en esta temporada");
+        return a;
+      }
+    });
+  };
+  const handleClickBack = (seasons) => {
+    setepisodio((a) => a - 1);
+  };
 
   if (!show) {
     return <div>Loading...</div>;
@@ -100,12 +103,15 @@ export default function SeriesSearch() {
       </section>
       <div>
         <div>
-          <h1>Temporada {seasons} Episodio {episodio}</h1>
+          <h1>
+            Temporada {seasons} Episodio {episodio}
+          </h1>
           <details class="dropdown">
             <summary class="btn m-1 back">Temporadas</summary>
             <ul class="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
               {show?.seasons.map((season) => (
-                <li className="text-left"
+                <li
+                  className="text-left"
                   onClick={() => {
                     setSeasons(season.season_number);
                   }}
@@ -115,7 +121,6 @@ export default function SeriesSearch() {
               ))}
             </ul>
           </details>
-          
         </div>
         <iframe
           src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
@@ -128,7 +133,7 @@ export default function SeriesSearch() {
           <button
             className="btn rounded-lg glass"
             onClick={() => {
-              setepisodio((a) => a - 1);
+              handleClickBack(seasons)
             }}
           >
             Anterior
@@ -136,7 +141,7 @@ export default function SeriesSearch() {
           <button
             className="btn rounded-lg glass"
             onClick={() => {
-              setepisodio((a) => a + 1);
+              handleClickNext(seasons)
             }}
           >
             Siguiente

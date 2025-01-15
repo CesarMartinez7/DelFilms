@@ -3,6 +3,17 @@ import { useNavigate } from "react-router-dom";
 import HoverCard from "../Components/HoverCard";
 import NoImage from "../assets/noImage.webp";
 
+const API_TOKEN = import.meta.env.VITE_API_TOKEN;
+
+const opciones = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${API_TOKEN}`,
+  },
+  mode: "cors",
+};
+
 const HoverCardSeries = ({ show }) => {
   const navigate = useNavigate();
   return (
@@ -41,7 +52,7 @@ export default function Series() {
   const navigate = useNavigate();
   const inputRef = useRef();
   const [query, setQuery] = useState(localStorage.getItem("serie_query") || "");
-  const URL = `https://api.themoviedb.org/3/search/tv?query=${query}&api_key=46bc83931796202fd8d9924bf15987dd`;
+  const URL = `https://api.themoviedb.org/3/search/tv?query=${query}`;
   const [show, setshow] = useState([]);
 
   const handleSubmit = (e) => {
@@ -56,7 +67,7 @@ export default function Series() {
   };
 
   useEffect(() => {
-    fetch(URL)
+    fetch(URL, opciones)
       .then((respuesta) => respuesta.json())
       .then((showa) => setshow(showa.results));
   }, [query]);
@@ -66,7 +77,6 @@ export default function Series() {
       <div className="mt-3">
         <h1 className="font-bold text-2xl">Series router</h1>
         <form onSubmit={handleSubmit}>
-          
           <input
             ref={inputRef}
             autoComplete="true"
@@ -81,7 +91,7 @@ export default function Series() {
         </form>
         <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-4  p-4">
           {show &&
-            show.map((sh) => <HoverCardSeries show={sh}></HoverCardSeries>)}
+            show.map((show) => <HoverCardSeries show={show} key={show.id}></HoverCardSeries>)}
         </ul>
       </div>
     </>

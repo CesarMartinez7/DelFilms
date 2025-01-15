@@ -3,17 +3,21 @@
 <strong>Delti</strong> es una aplicación web para descubrir, disfrutar y compartir películas. Utiliza la API de The Movie Database (TMDb) para obtener información sobre películas populares junto con la api de [Vidlink](https://vidlink.pro/) y permite a los usuarios buscar sus películas favoritas si anuncios.
 
 # Deploy Link Free
-   - [Vercel](https://delfilms.vercel.app/)
-   - [Render](https://delfilms.onrender.com)
    - [Cloudflare](https://delfilms.pages.dev/)
+   - [Vercel](https://delfilms.vercel.app/)
 
 
-## Características
 
-- **Búsqueda de películas**: Busca tus películas favoritas por título.
-- **Películas populares**: Muestra una lista de películas populares al iniciar la aplicación.
-- **Detalles de la película**: Muestra información detallada sobre una película seleccionada, incluyendo su sinopsis, géneros, popularidad, fecha de lanzamiento, estado y más.
-- **Reproducción de películas**: Permite la reproducción de películas a través de un iframe integrado.
+
+## **Características**
+
+- **Búsqueda de películas**: Busca tus películas favoritas por título.  
+- **Películas populares**: Muestra una lista de películas populares al iniciar la aplicación.  
+- **Detalles de la película**: Muestra información detallada sobre una película seleccionada, incluyendo su sinopsis, géneros, popularidad, fecha de lanzamiento, estado y más.  
+- **Reproducción de películas**: Permite la reproducción de películas a través de un iframe integrado.  
+- **Interfaz amigable**: Diseñada para ofrecer una experiencia de usuario intuitiva y atractiva.  
+- **Integración con series**: Ahora también puedes buscar y explorar series, con toda la funcionalidad que ya conoces.
+
 
 ## Tecnologías Utilizadas
 
@@ -22,6 +26,7 @@
 - **Tailwind CSS**: Framework de CSS para un diseño rápido y eficiente.
 - **DaisyUI**: Componentes de UI para Tailwind CSS.
 - **TMDb API**: API para obtener información sobre películas.
+- **VIDLINK Y EMBED API**: API para obtener las series y películas.
 
 
 

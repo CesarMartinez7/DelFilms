@@ -22,8 +22,8 @@ export default function SeriesSearch() {
   }
 
   return (
-    <div className="mt-5 p-4 flex flex-col gap-5">
-      <section className="grid md:grid-cols-2 h-screen">
+    <div className="mt-5 p-4 flex flex-col gap-5 bg-transparent">
+      <section className="grid md:grid-cols-2 xl:h-screen">
         <div className="w-full grid place-content-center place-items-center ">
           <img
             src={
@@ -74,6 +74,7 @@ export default function SeriesSearch() {
             {show?.overview}
           </p>
           <h3 className="font-semibold text-wrap text-xl mb-2">Generos</h3>
+          <div>
           <ul className="mt flex gap-2 flex-wrap flex-row">
             {show?.genres?.map((genre) => (
               <li
@@ -84,6 +85,8 @@ export default function SeriesSearch() {
               </li>
             ))}
           </ul>
+
+          </div>
           <div className="stats stats-vertical md:stats-horizontal bg-transparent">
             <div className="stat">
               <div className="stat-title">Lenguaje</div>
@@ -155,13 +158,12 @@ export default function SeriesSearch() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center bg-transparent">
             <iframe
               src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
               frameborder="0"
               allowfullscreen
-              width={"70%"}
-              className="lg:h-screen bg-transparent"
+              className="bg-transparent w-full h-dvh"
             ></iframe>
           </div>
         </div>

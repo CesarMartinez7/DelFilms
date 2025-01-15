@@ -22,8 +22,8 @@ export default function SeriesSearch() {
   }
 
   return (
-    <div className="mt-5">
-      <section className="grid grid-cols-2 h-screen">
+    <div className="mt-5 p-4 flex flex-col gap-5">
+      <section className="grid md:grid-cols-2 h-screen">
         <div className="w-full grid place-content-center place-items-center ">
           <img
             src={
@@ -84,7 +84,7 @@ export default function SeriesSearch() {
               </li>
             ))}
           </ul>
-          <div className="stats stats-vertical lg:stats-horizontal bg-transparent">
+          <div className="stats stats-vertical md:stats-horizontal bg-transparent">
             <div className="stat">
               <div className="stat-title">Lenguaje</div>
               <div className="stat-value">
@@ -161,7 +161,7 @@ export default function SeriesSearch() {
               frameborder="0"
               allowfullscreen
               width={"70%"}
-              className="h-screen bg-transparent"
+              className="lg:h-screen bg-transparent"
             ></iframe>
           </div>
         </div>

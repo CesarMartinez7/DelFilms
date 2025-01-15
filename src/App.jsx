@@ -12,18 +12,15 @@ import SeriesServers from "./Components/SeriesServers";
 export const AppThemeContext = createContext(null); // Contexto de la app
 function App() {
   const [querySearch, setQuerySearch] = useState("");
+  console.log(JSON.parse(localStorage.getItem("movieFavorite")))
   const arrayLocalStorage =
-    JSON.parse(localStorage.getItem("movieFavorite")) === null
+    JSON.parse(localStorage.getItem("movieFavorite")) === null || undefined
       ? []
       : JSON.parse(localStorage.getItem("movieFavorite"));
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem("isDark");
     return savedTheme ? JSON.parse(savedTheme) : true;
   });
-
-  useEffect(() => {
-    localStorage.setItem("isFirsSession", "true")
-  },[])
 
   useEffect(() => {
     localStorage.setItem("isDark", JSON.stringify(isDark));

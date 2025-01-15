@@ -74,8 +74,10 @@ export default function Series() {
 
   return (
     <>
-      <div className="mt-3">
+      <div className="mt-7">
         <h1 className="font-bold text-2xl">Series router</h1>
+        <header className="flex justify-center">
+
         <form onSubmit={handleSubmit}>
           <input
             ref={inputRef}
@@ -83,12 +85,13 @@ export default function Series() {
             element="input"
             name="query"
             type="text"
-            placeholder="Star Wars, Squid Games..."
+            placeholder="Dexter, Squid Games..."
             className={
-              "back p-1 px-3 rounded-lg ring-none outline-none focus:ring-0 w-72 min-w-60 max-w-52"
+              "back p-1 px-3 rounded-lg  ring-none outline-none focus:ring-0 w-2/4 min-w-60 "
             }
           />
         </form>
+        </header>
         <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-4  p-4">
           {show &&
             show.map((show) => <HoverCardSeries show={show} key={show.id}></HoverCardSeries>)}

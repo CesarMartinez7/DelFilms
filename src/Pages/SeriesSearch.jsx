@@ -6,21 +6,16 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import SerieHook from "../Hooks/SeriesHook";
 
 export default function SeriesSearch() {
-  const [episodio, setepisodio, seasons, setSeasons, show, setShow] =
-    SerieHook();
-  const handleClickNext = (seasons) => {
-    setepisodio((a) => {
-      if (a < show?.seasons[seasons].episode_count) {
-        return a + 1;
-      } else {
-        window.alert("Ya no hay mas episodios en esta temporada");
-        return a;
-      }
-    });
-  };
-  const handleClickBack = (seasons) => {
-    setepisodio((a) => a - 1);
-  };
+  const [
+    episodio,
+    setepisodio,
+    seasons,
+    setSeasons,
+    show,
+    setShow,
+    handleClickBack,
+    handleClickNext,
+  ] = SerieHook();
 
   if (!show) {
     return <div>Loading...</div>;
@@ -49,6 +44,7 @@ export default function SeriesSearch() {
             {show?.name}
           </h2>
           <p>{show?.runtime}</p>
+          <div className="flex flex-wrap gap-2">
           <button
             className="btn glass btn-wide rounded-lg"
             onClick={() => {
@@ -57,6 +53,20 @@ export default function SeriesSearch() {
           >
             <Icon icon="tabler:play" width="18" height="18" /> Play
           </button>
+          <button
+            className="w-fit  h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm glass rounded-md tooltip"
+            data-tip="Añadir a Favoritos"
+            onClick={() => {
+              let array = JSON.parse(localStorage.getItem("movieFavorite"))
+              array.push(show?.id)
+              array = JSON.stringify(array)
+              localStorage.setItem("movieFavorite",array)
+            }}
+          >
+            <Icon icon="solar:heart-outline" width="17" height="17" /> Favoritos
+          </button>
+
+          </div>
           <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
             Synopsis
           </h3>
@@ -108,9 +118,9 @@ export default function SeriesSearch() {
           </h1>
           <div className="flex justify-between">
             <div>
-              <details class="dropdown">
-                <summary class="btn m-1 back">Temporadas</summary>
-                <ul class="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
+              <details className="dropdown">
+                <summary className="btn m-1 back">Temporadas</summary>
+                <ul className="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
                   {show?.seasons.map((season) => (
                     <li
                       className="text-left"
@@ -146,16 +156,14 @@ export default function SeriesSearch() {
             </div>
           </div>
           <div className="flex justify-center">
-          <iframe
-            src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
-            frameborder="0"
-            allowfullscreen
-            width={"70%"}
-            className="h-screen bg-transparent"
-          ></iframe>
-
+            <iframe
+              src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}`}
+              frameborder="0"
+              allowfullscreen
+              width={"70%"}
+              className="h-screen bg-transparent"
+            ></iframe>
           </div>
-
         </div>
       </div>
     </div>

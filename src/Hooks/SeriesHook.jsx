@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import MovieHook from "./MovieHook";
 
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
@@ -26,6 +27,19 @@ export default function SerieHook() {
       .then((data) => setShow(data));
     setepisodio(1);
   }, [URL, seasons]);
+  const handleClickNext = (seasons) => {
+    setepisodio((a) => {
+      if (a < show?.seasons[seasons].episode_count) {
+        return a + 1;
+      } else {
+        window.alert("Ya no hay mas episodios en esta temporada");
+        return a;
+      }
+    });
+  };
+  const handleClickBack = (seasons) => {
+    setepisodio((a) => a - 1);
+  };
 
-  return [episodio, setepisodio, seasons, setSeasons, show, setShow];
+  return [episodio, setepisodio, seasons, setSeasons, show, setShow,handleClickBack,handleClickNext];
 }

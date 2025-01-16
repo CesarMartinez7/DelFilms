@@ -24,7 +24,7 @@ export default function SeriesSearch() {
   }
 
   return (
-    <div className=" p-4 flex flex-col gap-5 bg-transparent">
+    <div className=" p-4 flex flex-col gap-5 bg-transparent z-0">
       <Breakcumbs cast={show?.name} type={"TV"}></Breakcumbs>
       <section className="grid md:grid-cols-2 xl:h-screen">
         <div className="w-full grid place-content-center place-items-center ">
@@ -159,7 +159,7 @@ export default function SeriesSearch() {
                     handleClickBack(seasons);
                   }}
                 >
-                  <Icon icon="solar:arrow-left-outline" width="24" height="24" /> Anterior
+                  <Icon icon="solar:arrow-left-outline" width="18" height="18" /> Anterior
                 </button>
                 <button
                   className="btn rounded-lg back"
@@ -167,16 +167,15 @@ export default function SeriesSearch() {
                     handleClickNext(seasons);
                   }}
                 >
-                  Siguiente <Icon icon="solar:arrow-right-outline" width="24" height="24" />
+                  Siguiente <Icon icon="solar:arrow-right-outline" width="18" height="18" />
                 </button>
               </div>
             </div>
           </div>
-          <div className="flex justify-center bg-transparent">
+          <div className="w-full   border rounded-7xl border-black/5">
             <iframe
               src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=c0c0c0&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=true&nextbutton=true`}
               frameborder="0"
-              allowfullscreen
               className="bg-transparent md:w-full md:h-dvh"
             ></iframe>
           </div>

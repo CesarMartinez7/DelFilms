@@ -173,11 +173,11 @@ export default function Series() {
               </div>
             </div>
           </div>
-          <div className="w-full   border rounded-7xl border-black/5">
+          <div className="w-full border rounded-7xl border-black/5">
             <iframe
               src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=c0c0c0&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=true&nextbutton=true`}
               frameBorder="0"
-              className="bg-transparent md:w-full md:h-dvh"
+              className="bg-transparent md:w-full md:h-dvh rounded-xl"
             ></iframe>
           </div>
         </div>

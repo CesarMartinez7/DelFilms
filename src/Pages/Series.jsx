@@ -1,111 +1,187 @@
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import HoverCard from "../Components/HoverCard";
-import NoImage from "../assets/noImage.webp";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import noImage from "../assets/noImage.webp";
+import Download from "../Components/Dowload";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import SerieHook from "../Hooks/SeriesHook";
+import Breakcumbs from "../Components/Breakcumbs";
 
-const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
-const opciones = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${API_TOKEN}`,
-  },
-  mode: "cors",
-};
+export default function Series() {
+  const [
+    episodio,
+    setepisodio,
+    seasons,
+    setSeasons,
+    show,
+    setShow,
+    handleClickBack,
+    handleClickNext,
+  ] = SerieHook();
 
-const NoTvFound = ({query}) => {
-  return(
-    <div className="h-screen flex justify-center items-center ">
-      <p className="font-bold text-4xl text-center ">No se encontraron resultados de  <strong className="text-white">{query.toUpperCase()}</strong> </p>
-    </div>
-  )
-}
+  if (!show) {
+    return <div>Loading...</div>;
+  }
 
-const HoverCardSeries = ({ show }) => {
-  const navigate = useNavigate();
   return (
-    <a
-      className="relative overflow-hidden shadow-lg group rounded-2xl p-0.5 z-10"
-      onClick={() => {
-        navigate(`/series/${show?.id}`);
-      }}
-    >
-      <img
-        src={
-          show?.poster_path === null || undefined
-            ? NoImage
-            : `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${show?.poster_path}`
-        }
-        alt={show?.name}
-        className="w-full h-full z-0 transition-transform duration-300 ease-in-out group-hover:scale-110 object-cover max-w-full max-h-full rounded-2xl grayscale-1 "
-      />
-      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="p-4 text-white">
-          <h3 className="text-sm md:text-md font-semibold mb-2">
+    <div className=" p-4 flex flex-col gap-5 bg-transparent z-0">
+      <Breakcumbs cast={show?.name} type={"TV"}></Breakcumbs>
+      <section className="grid md:grid-cols-2 xl:h-screen">
+        <div className="w-full grid place-content-center place-items-center ">
+          <img
+            src={
+              show?.poster_path === null || undefined
+                ? NoImage
+                : `https://image.tmdb.org/t/p/w500/${show?.poster_path}`
+            }
+            className="rounded-2xl object-cover shadow-lg hover:shadow-2xl h-4/5 max-h-fit"
+          />
+          <Download
+            link={`https://image.tmdb.org/t/p/w700/${show?.poster_path}`}
+            className={"btn rounded-md btn-sm py-1 glass"}
+          ></Download>
+        </div>
+        <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2 information">
+          <code className="font-light">{show?.tagline}</code>
+          <h2 className="text-4xl  md:text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
             {show?.name}
+          </h2>
+            <p className="font-extralight text-sm">{show?.first_air_date}</p>
+          <p>{show?.runtime}</p>
+          <div className="flex flex-wrap gap-2">
+            <button
+              className="btn glass btn-wide rounded-lg"
+              onClick={() => {
+                navigate(`/series/servers/${show.id}`);
+              }}
+            >
+              <Icon icon="tabler:play" width="18" height="18" /> Play
+            </button>
+            <button
+              className="w-fit  h-fit max-h-fit flex justify-center font-light text-sm btn btn-sm glass rounded-md tooltip"
+              data-tip="Añadir a Favoritos"
+              onClick={() => {
+                let array = JSON.parse(localStorage.getItem("movieFavorite"));
+                array.push(show?.id);
+                array = JSON.stringify(array);
+                localStorage.setItem("movieFavorite", array);
+              }}
+            >
+              <Icon icon="solar:heart-outline" width="17" height="17" />{" "}
+              Favoritos
+            </button>
+          </div>
+          <h3 className="font-semibold text-wrap text-xl mt-2 mb-2">
+            Synopsis
           </h3>
-          <div className="flex justify-between">
-            <p className="text-[10px]">
-              <span>{show?.first_air_date}</span>
-            </p>
+          <p className=" text-gray-400 text-pretty font-extralight">
+            {show?.overview}
+          </p>
+          <h3 className="font-semibold text-wrap text-xl mb-2">Generos</h3>
+          <div>
+            <ul className="mt flex gap-2 flex-wrap flex-row z-[-1]">
+              {show?.genres?.map((genre) => (
+                <li
+                  className="p-2  btn btn-sm back w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
+                  key={genre.id}
+                >
+                  {genre.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="stats stats-vertical md:stats-horizontal bg-transparent">
+            <div className="stat">
+              <div className="stat-title">Lenguaje</div>
+              <div className="stat-value">
+                {show?.original_language.toUpperCase()}
+              </div>
+              <div className="stat-desc">País de origen: {show?.origin_country[0] }</div>
+            </div>
+
+            <div className="stat">
+              <div className="stat-title">Episodios</div>
+              <div className="stat-value">{show.number_of_episodes}</div>
+              <div className="stat-desc">
+                Temporadas: {show?.number_of_seasons}
+              </div>
+            </div>
+
+            <div className="stat">
+              <div className="stat-title">Critica</div>
+              <div className="stat-value">
+                {show?.vote_average.toString().substring(0, 3)}
+              </div>
+              <div className="stat-desc">Estado: {show?.status}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div>
+        <div>
+          <h1>
+            Temporada {seasons} Episodio {episodio}
+          </h1>
+          <div className="flex justify-between flex-shrink ">
+            <div>
+              <details className="dropdown">
+                <summary className="btn m-1 back">Temporadas</summary>
+                <ul className="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
+                  {show?.seasons.map((season) => (
+                    <li
+                      className="text-left"
+                      key={season.id}
+                      onClick={() => {
+                        setSeasons(season?.season_number);
+                      }}
+                    >
+                      <button>Temporada {season.season_number}</button>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+              <details className="dropdown">
+                <summary className="btn m-1 back">Episodios</summary>
+                <ul className="menu dropdown-content back rounded-box z-[1] w-52 p-2 shadow">
+                  {show?.seasons[seasons]?.episode_count &&
+                    Array.from({
+                      length: show.seasons[seasons].episode_count,
+                    }).map((_, i) => <li key={i} onClick={() => {
+                      setepisodio(i + 1)
+                    }}><button>Episodio {i + 1}</button></li>)}
+                </ul>
+              </details>
+            </div>
+            <div className="flex justify-center">
+              <div className="flex justify-between gap-4 mb-5">
+                <button
+                  className="btn rounded-lg back z-10"
+                  onClick={() => {
+                    handleClickBack(seasons);
+                  }}
+                >
+                  <Icon icon="solar:arrow-left-outline" width="18" height="18" /> Anterior
+                </button>
+                <button
+                  className="btn rounded-lg back"
+                  onClick={() => {
+                    handleClickNext(seasons);
+                  }}
+                >
+                  Siguiente <Icon icon="solar:arrow-right-outline" width="18" height="18" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="w-full   border rounded-7xl border-black/5">
+            <iframe
+              src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=c0c0c0&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=true&nextbutton=true`}
+              frameBorder="0"
+              className="bg-transparent md:w-full md:h-dvh"
+            ></iframe>
           </div>
         </div>
       </div>
-    </a>
-  );
-};
-
-export default function Series() {
-  const navigate = useNavigate();
-  const inputRef = useRef();
-  const [query, setQuery] = useState(localStorage.getItem("serie_query") || "");
-  const URL = `https://api.themoviedb.org/3/search/tv?query=${query}`;
-  const [show, setShow] = useState([]);
-
-  const handleSubmit = (e) => {
-    if(e.target[0].value.length > 0){
-      e.preventDefault();
-      localStorage.setItem("serie_query", e.target[0].value);
-      setQuery(localStorage.getItem("serie_query"));
-    }else{
-      alert("Por favor inserta texto en en el campo. ;)")
-    }
-  };
-
-  useEffect(() => {
-    fetch(URL, opciones)
-      .then((respuesta) => respuesta.json())
-      .then((showa) => setShow(showa.results));
-      console.log(show.length)
-      console.log(show)
-  }, [query]);
-
-
-
-  return (
-    <>
-      <div className="mt-7">
-        <header className="flex justify-center">
-
-        <form onSubmit={handleSubmit}>
-          <input
-            ref={inputRef}
-            autoComplete="true"
-            element="input"
-            name="query"
-            type="text"
-            placeholder="Dexter, Squid Games..."
-            className={
-              "back p-1 px-3 rounded-lg  ring-none outline-none focus:ring-0 w-2/4 min-w-60 "
-            }
-          />
-        </form>
-        </header>
-        {show.length === 0 ? <NoTvFound query={query}></NoTvFound> : <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-3 p-4 ">
-          { show && show.map((showa) => <HoverCardSeries show={showa} key={showa.id}></HoverCardSeries>) }
-        </ul>}
-      </div>
-    </>
+    </div>
   );
 }

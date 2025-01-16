@@ -43,7 +43,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/main" element={<MainPage />} />
             <Route path="/search" element={<Data />} />
-            <Route path="/series" element={<Series></Series>}></Route>
+            <Route path="/series" element={<SeriesSearch></SeriesSearch>}></Route>
             <Route
               path="/favorite"
               element={
@@ -52,7 +52,7 @@ function App() {
             />
             <Route path="/series/servers/:id" element={<SeriesServers></SeriesServers>}></Route>
             <Route path="/movie/servers/:id" element={<MovieServer />}></Route>
-            <Route path="/series/:id" element={<SeriesSearch></SeriesSearch>}></Route>
+            <Route path="/series/:id" element={<Series></Series>}></Route>
             <Route path="/about" element={<About></About>}></Route>
           </Routes>
           <Footer />

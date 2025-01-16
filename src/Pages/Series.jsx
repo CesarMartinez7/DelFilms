@@ -74,7 +74,6 @@ export default function Series() {
   return (
     <>
       <div className="mt-7">
-        <h1 className="font-bold text-2xl">Series router</h1>
         <header className="flex justify-center">
 
         <form onSubmit={handleSubmit}>

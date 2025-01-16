@@ -9,13 +9,13 @@ function Footer() {
         <p>
           DelFilms
           <br />
-            Your favorite movies ;).
+            Your favorite movies and TV ;).
         </p>
       </aside>
       <nav>
         <h6 className="footer-title">Social</h6>
         <div className="grid grid-flow-col gap-4">
-          <a>
+          <a href="https://mail.google.com/mail/u/2/?pli=1#inbox?compose=CNvvJFXtccWvfGGFXmBJWjszdFvQjFgVDvllNkDbnVDwGPkhJJKwPHGFmdZkpSZlZnWzGbmwMdfrbCgFRXVmwMdKlBRzkWMdMDGDnkzlSjxsjCsggWSJrwvsKhlsNvCQmFxQwVdSCZPDwgbDRVTrxsRTMN">
           <Icon icon="tabler:brand-gmail" width="24" height="24" />
           </a>
           <a>

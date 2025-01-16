@@ -4,7 +4,7 @@ import Alert from "./Alert";
 
 function Breakcumbs({ cast = "Movie",type }) {
   return (
-    <div className="breadcrumbs text-sm mx-7 mt-3 sticky top-20">
+    <div className="breadcrumbs text-sm mx-7 mt-3 sticky top-20 z-30">
       <ul>
         <li>
           <a href="/" className="inline-grid items-center gap-2">

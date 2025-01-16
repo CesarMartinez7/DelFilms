@@ -42,10 +42,11 @@ export default function SeriesSearch() {
           ></Download>
         </div>
         <div className="w-full flex justify-center flex-col gap-1 content-center xl:h-screen bg-i mb-2 information">
-          <code className="font-light">{show?.original_name}</code>
+          <code className="font-light">{show?.tagline}</code>
           <h2 className="text-4xl  md:text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
             {show?.name}
           </h2>
+            <p className="font-extralight text-sm">{show?.first_air_date}</p>
           <p>{show?.runtime}</p>
           <div className="flex flex-wrap gap-2">
             <button
@@ -78,7 +79,7 @@ export default function SeriesSearch() {
           </p>
           <h3 className="font-semibold text-wrap text-xl mb-2">Generos</h3>
           <div>
-            <ul className="mt flex gap-2 flex-wrap flex-row">
+            <ul className="mt flex gap-2 flex-wrap flex-row z-[-1]">
               {show?.genres?.map((genre) => (
                 <li
                   className="p-2  btn btn-sm back w-fit h-fit max-h-fit flex rounded-[99px] justify-center font-light text-sm"
@@ -95,7 +96,7 @@ export default function SeriesSearch() {
               <div className="stat-value">
                 {show?.original_language.toUpperCase()}
               </div>
-              <div className="stat-desc">↗︎ 400 (22%)</div>
+              <div className="stat-desc">País de origen: {show?.origin_country[0] }</div>
             </div>
 
             <div className="stat">
@@ -121,7 +122,7 @@ export default function SeriesSearch() {
           <h1>
             Temporada {seasons} Episodio {episodio}
           </h1>
-          <div className="flex justify-between">
+          <div className="flex justify-between flex-shrink ">
             <div>
               <details className="dropdown">
                 <summary className="btn m-1 back">Temporadas</summary>
@@ -150,10 +151,10 @@ export default function SeriesSearch() {
                 </ul>
               </details>
             </div>
-            <div className="grid place-items-center">
+            <div className="flex justify-center">
               <div className="flex justify-between gap-4 mb-5">
                 <button
-                  className="btn rounded-lg back"
+                  className="btn rounded-lg back z-10"
                   onClick={() => {
                     handleClickBack(seasons);
                   }}
@@ -173,10 +174,10 @@ export default function SeriesSearch() {
           </div>
           <div className="flex justify-center bg-transparent">
             <iframe
-              src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=000000&secondaryColor=c0c0c0&iconColor=b4b4b4&icons=default&player=jw&title=true&poster=true&autoplay=true&nextbutton=true`}
+              src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=c0c0c0&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=true&nextbutton=true`}
               frameborder="0"
               allowfullscreen
-              className="bg-transparent w-full h-dvh"
+              className="bg-transparent md:w-full md:h-dvh"
             ></iframe>
           </div>
         </div>

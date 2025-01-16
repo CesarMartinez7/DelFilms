@@ -4,6 +4,8 @@ import noImage from "../assets/noImage.webp";
 import Download from "../Components/Dowload";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import SerieHook from "../Hooks/SeriesHook";
+import Breakcumbs from "../Components/Breakcumbs";
+
 
 export default function SeriesSearch() {
   const [
@@ -22,7 +24,8 @@ export default function SeriesSearch() {
   }
 
   return (
-    <div className="mt-5 p-4 flex flex-col gap-5 bg-transparent">
+    <div className=" p-4 flex flex-col gap-5 bg-transparent">
+      <Breakcumbs cast={show?.name} type={"TV"}></Breakcumbs>
       <section className="grid md:grid-cols-2 xl:h-screen">
         <div className="w-full grid place-content-center place-items-center ">
           <img
@@ -150,20 +153,20 @@ export default function SeriesSearch() {
             <div className="grid place-items-center">
               <div className="flex justify-between gap-4 mb-5">
                 <button
-                  className="btn rounded-lg glass"
+                  className="btn rounded-lg back"
                   onClick={() => {
                     handleClickBack(seasons);
                   }}
                 >
-                  Anterior
+                  <Icon icon="solar:arrow-left-outline" width="24" height="24" /> Anterior
                 </button>
                 <button
-                  className="btn rounded-lg glass"
+                  className="btn rounded-lg back"
                   onClick={() => {
                     handleClickNext(seasons);
                   }}
                 >
-                  Siguiente
+                  Siguiente <Icon icon="solar:arrow-right-outline" width="24" height="24" />
                 </button>
               </div>
             </div>

@@ -1,6 +1,6 @@
 # DelFilms
 
-<strong>Delti</strong> es una aplicación web para descubrir, disfrutar y compartir películas. Utiliza la API de The Movie Database (TMDb) para obtener información sobre películas populares junto con la api de [Vidlink](https://vidlink.pro/) y permite a los usuarios buscar sus películas favoritas si anuncios.
+<strong>DelFilms</strong> es una aplicación web para descubrir, disfrutar y compartir películas con nueva integración a series. Utiliza la API de The Movie Database (TMDb) para obtener información sobre películas populares junto con la api de [Vidlink](https://vidlink.pro/) y permite a los usuarios buscar sus películas favoritas si anuncios.
 
 # Deploy Link Free
    - [Cloudflare](https://delfilms.pages.dev/)

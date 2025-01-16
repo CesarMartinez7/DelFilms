@@ -30,7 +30,7 @@ const Movie = () => {
     <section>
       <main>
         <MenuToolTip />
-        <Breakcumbs movie={data?.title} />
+        <Breakcumbs movie={data?.title} type={"Movie"} />
         <div className="text-white grid md:grid-cols-2 gap-5 xl:p-12 p-4 md:p-2 mt-12 md:mt-0  ">
           <div className="w-full grid place-content-center place-items-center ">
             <img

@@ -62,7 +62,6 @@ export default function Series() {
       setQuery(localStorage.getItem("serie_query"));
     }else{
       alert("Por favor inserta texto en en el campo. ;)")
-      console.log("aaaaa")
     }
   };
 

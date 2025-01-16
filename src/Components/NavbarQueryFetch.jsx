@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import NoImage from "../assets/noImage.webp";
+import { memo } from "react";
 
-export default function NavbarQueryFetch({ movie, index }) {
+function NavbarQueryFetch({ movie, index }) {
   const navigate = useNavigate();
   return (
     <li key={index} className="alto">
@@ -26,3 +27,7 @@ export default function NavbarQueryFetch({ movie, index }) {
     </li>
   );
 }
+
+
+export default memo(NavbarQueryFetch)
+

@@ -82,7 +82,7 @@ function Navbar() {
           className=" md:flex font-semibold text-transparent bg-gradient-to-br from-white to-gray-950 bg-clip-text"
           href="/"
         >
-          {"DelFilms >.<"}
+          {"delfilms "}
         </a>
       </div>
       <div className="navbar-end alto">

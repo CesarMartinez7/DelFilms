@@ -44,7 +44,6 @@ export default function Favorite({ arrayLocalStorage }) {
             <div>
               <button className="btn btn-ghost back" onClick={()=>{
                 localStorage.setItem("movieFavorite", "[]")
-                console.log(localStorage.getItem("movieFavorite"))
                 location.reload()
               }}>Limpiar todo</button>
             </div>

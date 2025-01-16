@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, memo} from "react";
 import { useNavigate } from "react-router-dom";
 import HoverCard from "../Components/HoverCard";
 import NoImage from "../assets/noImage.webp";
@@ -22,7 +22,7 @@ const NoTvFound = ({query}) => {
   )
 }
 
-const HoverCardSeries = ({ show }) => {
+const HoverCardSeries = memo(function ({show}) {
   const navigate = useNavigate();
   return (
     <a
@@ -54,7 +54,7 @@ const HoverCardSeries = ({ show }) => {
       </div>
     </a>
   );
-};
+});
 
 export default function SeriesSearch() {
   const navigate = useNavigate();
@@ -77,8 +77,6 @@ export default function SeriesSearch() {
     fetch(URL, opciones)
       .then((respuesta) => respuesta.json())
       .then((showa) => setShow(showa.results));
-      console.log(show.length)
-      console.log(show)
   }, [query]);
 
 

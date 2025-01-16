@@ -14,6 +14,14 @@ const opciones = {
   mode: "cors",
 };
 
+const NoTvFound = ({query}) => {
+  return(
+    <div className="h-screen flex justify-center items-center ">
+      <p className="font-bold text-4xl text-center ">No se encontraron resultados de  <strong className="text-white">{query.toUpperCase()}</strong> </p>
+    </div>
+  )
+}
+
 const HoverCardSeries = ({ show }) => {
   const navigate = useNavigate();
   return (
@@ -53,7 +61,7 @@ export default function Series() {
   const inputRef = useRef();
   const [query, setQuery] = useState(localStorage.getItem("serie_query") || "");
   const URL = `https://api.themoviedb.org/3/search/tv?query=${query}`;
-  const [show, setshow] = useState([]);
+  const [show, setShow] = useState([]);
 
   const handleSubmit = (e) => {
     if(e.target[0].value.length > 0){
@@ -68,8 +76,12 @@ export default function Series() {
   useEffect(() => {
     fetch(URL, opciones)
       .then((respuesta) => respuesta.json())
-      .then((showa) => setshow(showa.results));
+      .then((showa) => setShow(showa.results));
+      console.log(show.length)
+      console.log(show)
   }, [query]);
+
+
 
   return (
     <>
@@ -90,10 +102,9 @@ export default function Series() {
           />
         </form>
         </header>
-        <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-3 p-4 ">
-          {show &&
-            show.map((show) => <HoverCardSeries show={show} key={show.id}></HoverCardSeries>)}
-        </ul>
+        {show.length === 0 ? <NoTvFound query={query}></NoTvFound> : <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-3 p-4 ">
+          { show && show.map((showa) => <HoverCardSeries show={showa} key={showa.id}></HoverCardSeries>) }
+        </ul>}
       </div>
     </>
   );

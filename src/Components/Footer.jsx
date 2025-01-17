@@ -5,9 +5,8 @@ function Footer() {
   return (
     <footer className="footer text-neutral-content p-10">
       <aside>
-      <strong className="font-bold text-4xl" >{">.<"}</strong>
         <p>
-          DelFilms
+          delfilms
           <br />
             Your favorite movies and TV ;).
         </p>

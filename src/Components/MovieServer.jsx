@@ -25,6 +25,13 @@ export default function MovieServer() {
           <Icon icon="solar:play-line-duotone" width="16" height="16" />
           Embed Link
         </Link>
+        <Link
+          className="inline-flex items-center glass btn btn-neutral gap-2 rounded-md"
+          to={`https://vidsrc.to/embed/movie/${id}`}
+        >
+          <Icon icon="solar:play-line-duotone" width="16" height="16" />
+          VidSrc Link
+        </Link>
       </div>
       <div>
         {/* <Spoiler tagName="div">

@@ -6,7 +6,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import SerieHook from "../Hooks/SeriesHook";
 import Breakcumbs from "../Components/Breakcumbs";
 
-
 export default function Series() {
   const [
     episodio,
@@ -18,6 +17,8 @@ export default function Series() {
     handleClickBack,
     handleClickNext,
   ] = SerieHook();
+
+  const [isVidLink, setIsVidLink] = useState(true);
 
   if (!show) {
     return <div>Loading...</div>;
@@ -46,7 +47,7 @@ export default function Series() {
           <h2 className="text-4xl  md:text-6xl font-semibold text-transparent mt-1.5 mb-2.5 bg-gradient-to-br from-white to-gray-950 bg-clip-text">
             {show?.name}
           </h2>
-            <p className="font-extralight text-sm">{show?.first_air_date}</p>
+          <p className="font-extralight text-sm">{show?.first_air_date}</p>
           <p>{show?.runtime}</p>
           <div className="flex flex-wrap gap-2">
             <button
@@ -96,7 +97,9 @@ export default function Series() {
               <div className="stat-value">
                 {show?.original_language.toUpperCase()}
               </div>
-              <div className="stat-desc">País de origen: {show?.origin_country[0] }</div>
+              <div className="stat-desc">
+                País de origen: {show?.origin_country[0]}
+              </div>
             </div>
 
             <div className="stat">
@@ -125,6 +128,21 @@ export default function Series() {
           <div className="flex justify-between flex-shrink ">
             <div>
               <details className="dropdown">
+                <summary className="btn m-1 back"><Icon icon="solar:server-minimalistic-linear" width="12" height="12" /> Servers  </summary>
+                <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow back">
+                  <li onClick={() => {
+                    setIsVidLink(true);
+                  }}>
+                    <button>VidLink</button>
+                  </li>
+                  <li  onClick={() => {
+                  setIsVidLink(false);
+                }}>
+                    <button >Embed</button>
+                  </li>
+                </ul>
+              </details>
+              <details className="dropdown">
                 <summary className="btn m-1 back">Temporadas</summary>
                 <ul className="menu dropdown-content back  rounded-box z-[1] w-52 p-2 shadow">
                   {show?.seasons.map((season) => (
@@ -146,21 +164,33 @@ export default function Series() {
                   {show?.seasons[seasons]?.episode_count &&
                     Array.from({
                       length: show.seasons[seasons].episode_count,
-                    }).map((_, i) => <li key={i} onClick={() => {
-                      setepisodio(i + 1)
-                    }}><button>Episodio {i + 1}</button></li>)}
+                    }).map((_, i) => (
+                      <li
+                        key={i}
+                        onClick={() => {
+                          setepisodio(i + 1);
+                        }}
+                      >
+                        <button>Episodio {i + 1}</button>
+                      </li>
+                    ))}
                 </ul>
               </details>
             </div>
             <div className="flex justify-center">
               <div className="flex justify-between gap-4 mb-5">
                 <button
-                  className="btn rounded-lg back z-10"
+                  className="btn rounded-lg back z-10 "
                   onClick={() => {
                     handleClickBack(seasons);
                   }}
                 >
-                  <Icon icon="solar:arrow-left-outline" width="18" height="18" /> Anterior
+                  <Icon
+                    icon="solar:arrow-left-outline"
+                    width="18"
+                    height="18"
+                  />{" "}
+                  Anterior
                 </button>
                 <button
                   className="btn rounded-lg back"
@@ -168,14 +198,23 @@ export default function Series() {
                     handleClickNext(seasons);
                   }}
                 >
-                  Siguiente <Icon icon="solar:arrow-right-outline" width="18" height="18" />
+                  Siguiente{" "}
+                  <Icon
+                    icon="solar:arrow-right-outline"
+                    width="18"
+                    height="18"
+                  />
                 </button>
               </div>
             </div>
           </div>
           <div className="w-full border rounded-7xl border-black/5">
             <iframe
-              src={`https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=c0c0c0&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=true&nextbutton=true`}
+              src={
+                isVidLink
+                  ? `https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=c0c0c0&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=true&nextbutton=true`
+                  : `https://embed.su/embed/tv/${show?.id}/${seasons}/${episodio}`
+              }
               frameBorder="0"
               className="bg-transparent md:w-full md:h-dvh rounded-xl"
             ></iframe>

@@ -216,7 +216,7 @@ export default function Series() {
                   : `https://embed.su/embed/tv/${show?.id}/${seasons}/${episodio}`
               }
               frameBorder="0"
-              className="bg-transparent md:w-full md:h-dvh rounded-xl"
+              className="bg-transparent w-full  h-[400px] md:h-screen rounded-xl"
             ></iframe>
           </div>
         </div>

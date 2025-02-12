@@ -111,7 +111,9 @@ function Navbar() {
                   name="movienav"
                   type="text"
                   onChange={(e) => {
-                    setMovie(e.target.value);
+                    setTimeout(() => {
+                      setMovie(e.target.value);
+                    },2000)
                   }}
                   placeholder="Star Wars, Avengers..."
                   className={

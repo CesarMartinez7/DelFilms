@@ -100,7 +100,7 @@ export default function SeriesSearch() {
           />
         </form>
         </header>
-        {show.length === 0 ? <NoTvFound query={query}></NoTvFound> : <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-5 xl:grid-cols-9 gap-3 p-4 ">
+        {show.length === 0 ? <NoTvFound query={query}></NoTvFound> : <ul className="grid grid-cols-3 md:grid-cols-5 lg:grid-col-6 xl:grid-cols-10 gap-3 p-4 ">
           { show && show.map((showa) => <HoverCardSeries show={showa} key={showa.id}></HoverCardSeries>) }
         </ul>}
       </div>

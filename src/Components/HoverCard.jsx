@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import NoImage from "../assets/noImage.webp";
 import { Spoiler } from "spoiled";
-
+import { Icon } from "@iconify/react/dist/iconify.js";
 export default function HoverCard({ data }) {
   const handleAnchor = (e) => {
     navigate(`/movie/${data?.id}`);
@@ -26,10 +26,11 @@ export default function HoverCard({ data }) {
           <h3 className="text-sm md:text-md font-semibold mb-2">
             {data?.title}
           </h3>
-          <div className="flex justify-between">
-            <p className="text-[10px]">
+          <div className="flex justify-between text-[10px]">
+            <p>
               <span>{data?.release_date}</span>
             </p>
+            <p className="flex justify-center items-center gap-0.5 "> <span><Icon icon="solar:star-outline" width="10" height="10" /></span> {data.vote_average}</p>
           </div>
         </div>
       </div>

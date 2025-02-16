@@ -17,7 +17,7 @@ export default function Stats({ data }) {
 
       <div className="stat">
         <div className="stat-title">Critica</div>
-        <div className="stat-value">{data?.vote_average}</div>
+        <div className="stat-value">{String(data?.vote_average).substring(0,3)}</div>
         <div className="stat-desc">↘︎ 90 (14%)</div>
       </div>
     </div>

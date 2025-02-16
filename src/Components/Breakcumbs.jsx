@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import Alert from "./Alert";
 
-function Breakcumbs({ cast = "Movie",type }) {
+function Breakcumbs({ cast,type }) {
   return (
     <div className="breadcrumbs text-sm mx-7 mt-3 sticky top-20 z-30">
       <ul>

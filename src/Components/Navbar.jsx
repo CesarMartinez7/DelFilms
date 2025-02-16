@@ -100,7 +100,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box back w-auto p-2 shadow rounded-lg bg-slate-950 max-h-screen overflow-y-auto alto"
+            className="dropdown-content menu  back w-auto p-2  bg-red-700 shadow rounded-lg  max-h-screen overflow-hidden alto"
           >
             <li>
               <form onSubmit={handleSubmit} className="alto">
@@ -122,7 +122,6 @@ function Navbar() {
                 />
               </form>
             </li>
-
             {data.map((movie, index) => (
               <NavbarQueryFetch movie={movie} index={index} key={index} />
             ))}

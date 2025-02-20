@@ -27,8 +27,8 @@ export function Main2() {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 p-2 md:p-4">
       <div className="back p-6 rounded-lg ">
         <div>
-          <h2 className="text-2xl  mb-3">Créditos y Origen de Datos</h2>
-          <p className="font-extralight">
+          <h2 className="text-2xl mb-3 font-semibold">Créditos y Origen de Datos</h2>
+          <p className="font-extralight text-sm">
             Esta página utiliza la API de The Movie Database (TMDb) para obtener
             información y datos relacionados con películas, series y actores.
             Todas las consultas realizadas, como búsquedas de títulos, detalles de
@@ -39,11 +39,11 @@ export function Main2() {
       </div>
       <div className="back p-6 rounded-lg " >
         <div>
-          <h2 className="text-2xl font-medium mb-3">
+          <h2 className="text-2xl font-semibold mb-3">
             Interfaz Amigable y Funciones Personalizadas
           </h2>
           <div>
-            <p className="font-light">
+            <p className="font-light text-sm">
               Nuestra plataforma es fácil de usar, con recomendaciones
               personalizadas basadas en tus gustos y la opción de crear listas de
               reproducción para que accedas a tus películas favoritas rápidamente.
@@ -53,9 +53,9 @@ export function Main2() {
       </div>
       <div className="back p-6 rounded-lg ">
         <div>
-          <h2 className="text-2xl font-medium mb-3">Calidad de Visualización Superior</h2>
+          <h2 className="text-2xl font-bold mb-3">Calidad de Visualización Superior</h2>
           <div>
-            <p className="font-light">
+            <p className="font-light text-sm">
               Garantizamos una experiencia visual y de sonido de alta calidad, con
               opciones de streaming en resolución HD para que disfrutes de cada
               detalle de tus películas favoritas.

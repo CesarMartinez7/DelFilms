@@ -2,13 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-@font-face{
+@font-face {
   font-family: "Ubuntu";
   src: url("./assets/font/Ubuntu-Light.ttf") format("truetype");
-  font-weight:300;
+  font-weight: 300;
 }
 
 @font-face {
@@ -16,13 +13,11 @@
   src: url("./assets/font/Ubuntu-Medium.ttf") format("truetype");
 }
 
-
 :root {
   --bg-color-1: #030303;
   --bg-color-2: #050505;
   --bg-color-3: #080808;
 }
-
 
 @keyframes gradientAnimation {
   0% {
@@ -56,27 +51,34 @@
   border: 3px solid rgb(41, 41, 41);
 }
 
-
 :root {
-  background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
+  background: linear-gradient(
+    45deg,
+    var(--bg-color-1),
+    var(--bg-color-2),
+    var(--bg-color-3)
+  );
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
   transition: all 700ms;
 }
 
-
-*{
-  font-family: "Ubuntu" ;
+* {
+  font-family: "Ubuntu";
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
+  background: linear-gradient(
+    45deg,
+    var(--bg-color-1),
+    var(--bg-color-2),
+    var(--bg-color-3)
+  );
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
 }
-
 
 @keyframes floatingParticles {
   0% {
@@ -88,92 +90,89 @@ body {
 }
 
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.096) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.123) 1px,
+      transparent 1px
+    ),
+    radial-gradient(circle, rgba(255, 255, 255, 0.13) 1px, transparent 1px);
   background-size: 50px 50px;
   background-position: 0 0, 25px 25px;
   animation: floatingParticles 20s linear infinite;
 }
 
-
-
-
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   display: flex;
   flex-direction: column;
 }
 
-
 footer {
   margin-top: auto;
 }
-
 
 .dropdown-content {
   z-index: 50;
 }
 
 .card {
-    backdrop-filter: blur(1px) saturate(13%);
-    -webkit-backdrop-filter: blur(5px) saturate(13%);
-    border-radius: 16px;
-    background-color: rgba(8, 8, 8, 0.781);
-    border: 1px solid rgba(255, 255, 255, 0.125);
+  backdrop-filter: blur(1px) saturate(13%);
+  -webkit-backdrop-filter: blur(5px) saturate(13%);
+  border-radius: 16px;
+  background-color: rgba(8, 8, 8, 0.781);
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
-
-.back{
+.back {
   backdrop-filter: blur(1px) saturate(13%);
   background: rgba(12, 12, 12, 0.85);
   z-index: 999;
   border: 1px solid rgba(255, 255, 255, 0.125);
-  transition: all ease 700ms
+  transition: all ease 700ms;
 }
 
-.back:hover{
+.back:hover {
   background: rgba(12, 12, 12, 0.95);
-  transition: all ease 700ms
+  transition: all ease 700ms;
 }
 
 .toCenteer {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-
 
 .alto {
   z-index: 2147483647;
 }
 
-::selection{
+::selection {
   color: white;
   background-color: #2f2f2f;
 }
-.animation-alert{
+.animation-alert {
   animation-name: alert;
   animation-duration: 500ms;
   position: sticky;
   position: -webkit-sticky;
   top: 10%;
   left: 100%;
-  @apply animate-pulse
+  @apply animate-pulse;
 }
 
-.animation-alert:hover{
-  @apply animate-none
+.animation-alert:hover {
+  @apply animate-none;
 }
-
 
 @keyframes alert {
   0% {
@@ -188,14 +187,13 @@ footer {
   }
 }
 
-
 .toCenter {
   top: 50%;
   left: 50%;
-  transform: translate(-50%,600%);
+  transform: translate(-50%, 600%);
 }
 
-.toto:hover{
+.toto:hover {
   transition: all 0.3s;
   filter: drop-shadow(0 0 0.75rem #a5a3a3);
 }

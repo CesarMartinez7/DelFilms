@@ -29,6 +29,7 @@ function App() {
     );
   }, [isDark, querySearch]);
 
+
   return (
     <AppThemeContext.Provider
       value={{ isDark, setIsDark, querySearch, setQuerySearch }}

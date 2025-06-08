@@ -2,12 +2,12 @@ import { Marquee } from "@devnomic/marquee";
 import "@devnomic/marquee/dist/index.css";
 import datadeImagenes from "../Mock/marque1.json";
 import dataMockMarquee2 from "../Mock/marque2.json";
-import { replace, useHref, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Marqueee = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col gap-8 justify-center mt-9">
+    <div className="flex flex-col gap-8 justify-center mt-9 mask-x-from-70% mask-x-to-90% bg-transparent mask-y-from-70% mask-y-to-90% ">
       <Marquee
         fade={true}
         direction="left"
@@ -42,7 +42,7 @@ const Marqueee = () => {
           <a
             key={index}
             className="text-white child text-3xl w-24 xl:w-36 xl:h-30"
-            onClick={() => navigate(`/movie/${data.id}`)} 
+            onClick={() => navigate(`/movie/${data.id}`)}
           >
             <img
               src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`}
@@ -55,6 +55,5 @@ const Marqueee = () => {
     </div>
   );
 };
-
 
 export default Marqueee;

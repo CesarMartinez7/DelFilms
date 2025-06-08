@@ -5,8 +5,6 @@ import { AppThemeContext } from "../App";
 import NavbarQueryFetch from "./NavbarQueryFetch";
 import ButtonChangeTheme from "./ButtonTheme";
 
-
-
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 function Navbar() {
@@ -107,13 +105,12 @@ function Navbar() {
                 <input
                   ref={inputRef}
                   autoComplete="true"
-                  element="input"
                   name="movienav"
                   type="text"
                   onChange={(e) => {
                     setTimeout(() => {
                       setMovie(e.target.value);
-                    },2000)
+                    }, 3000);
                   }}
                   placeholder="Star Wars, Avengers..."
                   className={
@@ -123,12 +120,11 @@ function Navbar() {
               </form>
             </li>
             {data.map((movie, index) => (
-              <NavbarQueryFetch movie={movie} index={index} key={index} />
+              <NavbarQueryFetch movie={movie} index={index} key={movie} />
             ))}
           </ul>
         </button>
 
-        <ButtonChangeTheme></ButtonChangeTheme>
         <a className="btn btn-ghost btn-circle" href="/favorite">
           <div className="indicator">
             <Icon icon="iconoir:bookmark" width="20" height="20" />

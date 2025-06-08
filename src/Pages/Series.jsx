@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import noImage from "../assets/noImage.webp";
+import { useState } from "react";
 import Download from "../Components/Dowload";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import SerieHook from "../Hooks/SeriesHook";
 import Breakcumbs from "../Components/Breakcumbs";
+import NoImage from "../assets/noImage.webp";
 
 export default function Series() {
   const [
@@ -13,10 +12,20 @@ export default function Series() {
     seasons,
     setSeasons,
     show,
-    setShow,
     handleClickBack,
     handleClickNext,
   ] = SerieHook();
+
+  const handleClickGoToIframe = () => {
+    const iframe = document.getElementById("iframe_viewer");
+    if (!iframe) {
+      console.error("Iframe not found");
+      return;
+    }
+    if (iframe) {
+      iframe.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const [isVidLink, setIsVidLink] = useState(true);
 
@@ -52,9 +61,7 @@ export default function Series() {
           <div className="flex flex-wrap gap-2">
             <button
               className="btn glass btn-wide rounded-lg"
-              onClick={() => {
-                navigate(`/series/servers/${show.id}`);
-              }}
+              onClick={handleClickGoToIframe}
             >
               <Icon icon="tabler:play" width="18" height="18" /> Play
             </button>
@@ -128,17 +135,28 @@ export default function Series() {
           <div className="flex justify-between flex-shrink ">
             <div>
               <details className="dropdown">
-                <summary className="btn m-1 back"><Icon icon="solar:server-minimalistic-linear" width="12" height="12" /> Servers  </summary>
+                <summary className="btn m-1 back">
+                  <Icon
+                    icon="solar:server-minimalistic-linear"
+                    width="12"
+                    height="12"
+                  />{" "}
+                  Servers{" "}
+                </summary>
                 <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow back">
-                  <li onClick={() => {
-                    setIsVidLink(true);
-                  }}>
+                  <li
+                    onClick={() => {
+                      setIsVidLink(true);
+                    }}
+                  >
                     <button>VidLink</button>
                   </li>
-                  <li  onClick={() => {
-                  setIsVidLink(false);
-                }}>
-                    <button >Embed</button>
+                  <li
+                    onClick={() => {
+                      setIsVidLink(false);
+                    }}
+                  >
+                    <button>Embed</button>
                   </li>
                 </ul>
               </details>
@@ -210,6 +228,7 @@ export default function Series() {
           </div>
           <div className="w-full border rounded-7xl border-black/5">
             <iframe
+              id="iframe_viewer"
               src={
                 isVidLink
                   ? `https://vidlink.pro/tv/${show?.id}/${seasons}/${episodio}?primaryColor=c0c0c0&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=default&title=true&poster=true&autoplay=true&nextbutton=true`

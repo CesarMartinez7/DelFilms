@@ -40,7 +40,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar rounded-2xl back shadow-lg p-0.5 z-50 sticky top-3">
+    <div className="navbar rounded-2xl back shadow-lg p-0.5 z-[999] sticky top-3">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -61,16 +61,13 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow back rounded-md"
+            className="menu dropdown-content  z-[1] mt-4 w-52 p-2 shadow back rounded-md"
           >
             <li>
               <a href="/">Inicio</a>
             </li>
             <li>
-              <a href="/series">Series</a>
-            </li>
-            <li>
-              <Link to={"/about"}>Acerca de</Link>
+              <Link to={"series"} />
             </li>
           </ul>
         </div>
@@ -98,7 +95,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu  back w-auto p-2  bg-red-700 shadow rounded-lg  max-h-screen overflow-hidden alto"
+            className="dropdown-content menu  back w-auto p-2  bg-red-700 shadow rounded-lg  max-h-[90vh] overflow-hidden z-[999] "
           >
             <li>
               <form onSubmit={handleSubmit} className="alto">

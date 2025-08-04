@@ -12,16 +12,19 @@ export default function MovieHook() {
       Authorization: `Bearer ${API_TOKEN}`,
     },
   };
-  
+
+  const [isLoading, setIsLoading] = useState(false)
   const { id } = useParams();
   const URL = `https://api.themoviedb.org/3/movie/${id}`;
   const [data, setData] = useState(null);
   const [movieFavorite, setMovieFavorite] = useState([]);
   useEffect(() => {
+    setIsLoading(true)
     fetch(URL, opciones)
       .then((res) => res.json())
       .then((json) => {
         setData(json);
+        setIsLoading(false)
       });
   }, [id, URL]);
   const handleAddToFavorites = () => {
@@ -43,5 +46,5 @@ export default function MovieHook() {
       }
     }
   };
-  return [id, URL, data, setData, opciones,handleAddToFavorites];
+  return [id, URL, data, setData, opciones,handleAddToFavorites, isLoading];
 }
